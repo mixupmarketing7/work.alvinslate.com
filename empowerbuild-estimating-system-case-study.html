@@ -64,6 +64,16 @@
   .impact-band{display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:8px; overflow:hidden; margin-top:22px;}
   .impact-tile{background:var(--surface); padding:16px 18px;}
   .impact-tile .v{font-family:var(--mono); font-weight:700; font-size:1.15rem; color:var(--good); font-variant-numeric:tabular-nums;}
+
+  .chart-wrap{margin-top:20px;}
+  .chart-svg{width:100%; height:auto; display:block; max-width:600px;}
+  .chart-svg .axis-line{stroke:var(--line); stroke-width:1;}
+  .chart-svg .tick{stroke:var(--line); stroke-width:1;}
+  .chart-svg .axis-label{font-family:var(--mono); font-size:10px; fill:var(--ink-dim);}
+  .chart-svg .band-label{font-family:var(--mono); font-size:11px; font-weight:600; fill:var(--ink);}
+  .chart-svg .label-bad{fill:var(--bad);}
+  .chart-svg .mark-good{fill:var(--good); opacity:0.28;}
+  .chart-svg .mark-bad{fill:var(--bad);}
   .impact-tile .l{font-size:0.78rem; color:var(--ink-dim); margin-top:4px;}
 
   footer{margin-top:56px; padding-top:22px; border-top:1px solid var(--line); font-size:0.8rem; color:var(--ink-dim);}
@@ -88,6 +98,26 @@
       <div class="impact-tile"><div class="v">2</div><div class="l">Silent pricing errors caught and fixed before a client ever saw them</div></div>
       <div class="impact-tile"><div class="v">1</div><div class="l">Document-control near-miss closed with a standing sign-off rule</div></div>
       <div class="impact-tile"><div class="v">300&ndash;400KB</div><div class="l">Healthy PDF range the QC gate checks against, every render</div></div>
+    </div>
+
+    <div class="chart-wrap">
+      <svg viewBox="0 0 640 140" role="img" aria-label="Rendered estimate PDF file size: healthy range versus a caught corrupted render" class="chart-svg">
+        <line x1="30" y1="90" x2="610" y2="90" class="axis-line"/>
+        <line x1="30.0" y1="86" x2="30.0" y2="94" class="tick"/>
+        <text x="30.0" y="110" class="axis-label" text-anchor="middle">0KB</text>
+        <line x1="158.9" y1="86" x2="158.9" y2="94" class="tick"/>
+        <text x="158.9" y="110" class="axis-label" text-anchor="middle">100KB</text>
+        <line x1="287.8" y1="86" x2="287.8" y2="94" class="tick"/>
+        <text x="287.8" y="110" class="axis-label" text-anchor="middle">200KB</text>
+        <line x1="416.7" y1="86" x2="416.7" y2="94" class="tick"/>
+        <text x="416.7" y="110" class="axis-label" text-anchor="middle">300KB</text>
+        <line x1="545.6" y1="86" x2="545.6" y2="94" class="tick"/>
+        <text x="545.6" y="110" class="axis-label" text-anchor="middle">400KB</text>
+        <rect x="416.7" y="76" width="128.9" height="28" rx="6" class="mark-good"><title>Healthy rendered PDF: 300-400KB</title></rect>
+        <text x="481.1" y="66" class="band-label" text-anchor="middle">Healthy range</text>
+        <circle cx="89.3" cy="90" r="7" class="mark-bad"><title>Corrupted render caught by the QC gate: 46KB</title></circle>
+        <text x="89.3" y="66" class="band-label label-bad" text-anchor="middle">46KB &mdash; caught</text>
+      </svg>
     </div>
   </section>
 
