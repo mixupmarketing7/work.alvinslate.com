@@ -1,0 +1,129 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Two Strong Quadrants</title></head><body>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800;900&family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+  :root{
+    --paper:#F1F1EC; --surface:#FFFFFF; --surface-2:#E9E9E1;
+    --ink:#1C1B17; --ink-dim:#5C5A50; --signal:#B5540C; --signal-deep:#7A3707;
+    --line:#DEDDD1; --line-strong:#C7C6B7;
+    --a:#2a78d6; --a-bg:#E8F0FB; --d:#eda100; --d-bg:#FCF1DD; --b:#1baf7a; --b-bg:#E4F5EE; --c:#eb6834; --c-bg:#FCE7DD;
+    --display:'Big Shoulders Display','Arial Narrow',sans-serif; --body:'Newsreader',Georgia,'Times New Roman',serif; --mono:'IBM Plex Mono',ui-monospace,'SF Mono',Menlo,monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#141310; --surface:#1C1A15; --surface-2:#242119; --ink:#EDEBE2; --ink-dim:#A9A599;
+      --signal:#E08A45; --signal-deep:#F0A868; --line:#332F26; --line-strong:#433E30;
+      --a:#6FA8E8; --a-bg:#1B2A3E; --d:#F0B84A; --d-bg:#3A2C10; --b:#4FCFA0; --b-bg:#123829; --c:#F08858; --c-bg:#3A2013;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#141310; --surface:#1C1A15; --surface-2:#242119; --ink:#EDEBE2; --ink-dim:#A9A599;
+    --signal:#E08A45; --signal-deep:#F0A868; --line:#332F26; --line-strong:#433E30;
+    --a:#6FA8E8; --a-bg:#1B2A3E; --d:#F0B84A; --d-bg:#3A2C10; --b:#4FCFA0; --b-bg:#123829; --c:#F08858; --c-bg:#3A2013;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0; background-color:var(--paper); color:var(--ink); font-family:var(--body); font-size:1.02rem; line-height:1.6; padding:0 20px;
+    background-image:
+      repeating-linear-gradient(0deg, color-mix(in srgb, var(--line) 55%, transparent) 0, color-mix(in srgb, var(--line) 55%, transparent) 1px, transparent 1px, transparent 40px),
+      repeating-linear-gradient(90deg, color-mix(in srgb, var(--line) 55%, transparent) 0, color-mix(in srgb, var(--line) 55%, transparent) 1px, transparent 1px, transparent 40px);
+  }
+  .wrap{max-width:840px; margin:0 auto; padding-block:44px 70px;}
+  a{color:var(--signal-deep);}
+  .eyebrow{font-family:var(--mono); font-size:0.72rem; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-dim); margin:0 0 14px;}
+  .back{font-family:var(--mono); font-size:0.78rem; text-decoration:none; color:var(--ink-dim); border-bottom:1px solid var(--line-strong); display:inline-block; margin-bottom:22px;}
+  .back:hover{color:var(--signal-deep); border-color:var(--signal);}
+
+  h1{font-family:var(--display); font-weight:800; font-style:italic; font-size:clamp(2.2rem,6.5vw,3.4rem); line-height:1.02; letter-spacing:-.01em; margin:0 0 14px; color:var(--ink); text-wrap:balance;}
+  p.dek{font-size:1.08rem; color:var(--ink-dim); max-width:62ch; margin:0;}
+
+  section{margin-top:46px;}
+  h2.sec{font-family:var(--display); font-weight:700; font-style:italic; font-size:clamp(1.4rem,3.6vw,1.75rem); color:var(--ink); margin:0 0 6px; letter-spacing:-.005em;}
+  p.sec-note{color:var(--ink-dim); font-size:0.9rem; margin:0 0 22px; max-width:62ch;}
+  .lede{font-size:1.02rem; max-width:66ch;}
+  .lede + .lede{margin-top:12px;}
+
+  /* split bar: upper cerebral vs lower limbic */
+  .split{margin-top:26px;}
+  .split-bar{display:flex; height:54px; border-radius:6px; overflow:hidden; border:1px solid var(--line);}
+  .split-seg{display:flex; align-items:center; justify-content:center; font-family:var(--mono); font-weight:600; font-size:0.92rem; color:#fff;}
+  .split-seg.top{background:linear-gradient(90deg, var(--a), var(--d)); flex:63;}
+  .split-seg.bottom{background:linear-gradient(90deg, var(--b), var(--c)); flex:37;}
+  .split-labels{display:flex; justify-content:space-between; font-size:0.74rem; color:var(--ink-dim); margin-top:6px; font-family:var(--mono);}
+
+  /* quadrant cards */
+  .quads{display:grid; grid-template-columns:repeat(2,1fr); gap:14px; margin-top:22px;}
+  @media (max-width:560px){ .quads{grid-template-columns:1fr;} }
+  .quad{background:var(--surface); border:1px solid var(--line); border-top:4px solid var(--qc); border-radius:8px; padding:18px 20px;}
+  .quad.a{--qc:var(--a);} .quad.d{--qc:var(--d);} .quad.b{--qc:var(--b);} .quad.c{--qc:var(--c);}
+  .quad-head{display:flex; align-items:baseline; justify-content:space-between; gap:10px; margin-bottom:8px;}
+  .quad-head h3{font-family:var(--display); font-weight:700; font-size:1.1rem; margin:0; color:var(--ink);}
+  .quad-code{font-family:var(--mono); font-size:0.7rem; letter-spacing:.04em; text-transform:uppercase; padding:3px 9px; border-radius:20px; color:var(--qc); background:color-mix(in srgb, var(--qc) 16%, var(--surface));}
+  .quad p{font-size:0.92rem; color:var(--ink-dim); margin:0;}
+  .quad p.fit{color:var(--ink); margin-top:8px; font-size:0.9rem;}
+  .quad p.fit b{font-weight:600;}
+
+  .note-box{background:var(--surface-2); border-radius:8px; padding:16px 20px; margin-top:24px; font-size:0.92rem; color:var(--ink-dim); max-width:66ch;}
+
+  footer{margin-top:56px; padding-top:22px; border-top:1px solid var(--line); font-size:0.8rem; color:var(--ink-dim);}
+  footer p{max-width:74ch; margin:0 0 8px;}
+  @media (max-width:520px){ .wrap{padding-block:34px 50px;} }
+</style>
+
+<div class="wrap">
+  <a class="back" href="alvin-slate-profile.html">&larr; Alvin Slate</a>
+  <p class="eyebrow">HBDI&reg; Whole Brain&reg; Profile</p>
+  <h1>Two strong quadrants</h1>
+  <p class="dek">A short, honest look at a thinking-preference assessment I've found genuinely useful: what it measures, what it doesn't, and where my own profile lands.</p>
+
+  <section>
+    <h2 class="sec">What HBDI actually is</h2>
+    <p class="lede">The Herrmann Brain Dominance Instrument was developed by Ned Herrmann at GE in the 1970s, drawing on Roger Sperry's split-brain research and Paul MacLean's triune-brain model. It sorts thinking preference, not ability, into four quadrants: analytical, practical, relational, and experimental. You take a self-report questionnaire; it comes back as a profile of which quadrants you gravitate toward, not how skilled you are in any of them.</p>
+    <p class="lede">Two things are worth saying plainly. It's a preference model, not an IQ or competency test, so a "strong" quadrant means you default there, not that you're better at it than someone whose default sits elsewhere. And it's a proprietary instrument, still widely used in corporate leadership-development programs, which is where I first took it.</p>
+  </section>
+
+  <section>
+    <h2 class="sec">My profile</h2>
+    <p class="sec-note">Strong preference in two quadrants that sit diagonally opposite each other: analytical and experimental. Practical and relational are both present, just intermediate rather than dominant.</p>
+    <div class="split">
+      <div class="split-bar">
+        <div class="split-seg top">63%</div>
+        <div class="split-seg bottom">37%</div>
+      </div>
+      <div class="split-labels"><span>Analytical + Experimental (upper, cerebral)</span><span>Practical + Relational (lower, limbic)</span></div>
+      <p style="font-size:0.78rem; color:var(--ink-dim); margin:8px 0 0; max-width:60ch;">These are the instrument's own reported figures, not an independent statistical measurement &mdash; treat them as "roughly two-thirds / one-third," not as precise to the point.</p>
+    </div>
+
+    <div class="quads">
+      <div class="quad a">
+        <div class="quad-head"><h3>Analytical</h3><span class="quad-code">1 &middot; Strong</span></div>
+        <p>Logical, fact-based, quantitative. Wants to know what the data actually says before deciding anything.</p>
+        <p class="fit"><b>Where it shows up:</b> the statistical rigor behind the county valuation work &mdash; COD, PRD, ratio studies, model-blind validation gates.</p>
+      </div>
+      <div class="quad d">
+        <div class="quad-head"><h3>Experimental</h3><span class="quad-code">1 &middot; Strong</span></div>
+        <p>Conceptual, big-picture, comfortable with novelty. Wants to build the thing that doesn't exist yet.</p>
+        <p class="fit"><b>Where it shows up:</b> designing and shipping a library of AI agent workflows from scratch, and being willing to kill one that isn't earning its keep.</p>
+      </div>
+      <div class="quad b">
+        <div class="quad-head"><h3>Practical</h3><span class="quad-code">2 &middot; Intermediate</span></div>
+        <p>Organized, sequential, detail-oriented. Cares about getting the thing actually done and documented.</p>
+        <p class="fit"><b>Where it shows up:</b> present but secondary &mdash; it's the difference between a good idea and a change-order gate that actually stops unfunded work, or a QC check that catches a corrupted file before a client sees it.</p>
+      </div>
+      <div class="quad c">
+        <div class="quad-head"><h3>Relational</h3><span class="quad-code">2 &middot; Intermediate</span></div>
+        <p>Interpersonal, expressive, teaching-oriented. Reads the room and the relationship, not just the numbers.</p>
+        <p class="fit"><b>Where it shows up:</b> also secondary, also real &mdash; it's the part of me that ended up running a real estate club for nine regional chapters instead of just investing on my own.</p>
+      </div>
+    </div>
+
+    <div class="note-box">In Herrmann's own language this is a "double-dominant" profile: two strong quadrants that sit diagonally across the model rather than next to each other. In practice, it means my default mode swings between rigor and reinvention, with execution and people-work as real but secondary strengths I lean on deliberately rather than by instinct.</div>
+  </section>
+
+  <p style="font-family:var(--mono); font-size:0.8rem; margin:40px 0 0;"><a class="back" href="alvin-slate-bio.html" style="margin:0;">The rest of the story &rarr;</a></p>
+
+  <footer>
+    <p>HBDI&reg; and Whole Brain&reg; are registered trademarks of Herrmann Global, LLC. This page reflects one individual's self-reported assessment result and general public information about the model; it is not a clinical, competency, or IQ assessment, and no claim is made on Herrmann International's behalf beyond describing what the instrument is. This page is unlisted and shared by direct link only.</p>
+  </footer>
+</div>
+</body></html>
