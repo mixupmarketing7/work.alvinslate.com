@@ -51,6 +51,26 @@
   .decision-list li{font-size:0.97rem;}
   .decision-list b{color:var(--ink); font-weight:600;}
 
+  .jtbd-block{background:var(--surface); border:1px solid var(--line); border-left:3px solid var(--signal); border-radius:6px; padding:18px 20px; margin-top:16px; max-width:66ch;}
+  .jtbd-block .jtbd-label{font-family:var(--mono); font-size:0.68rem; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-dim); display:block; margin-bottom:8px;}
+  .jtbd-block p{font-family:var(--display); font-weight:600; font-size:1.05rem; font-style:italic; margin:0 0 8px; color:var(--ink);}
+  .jtbd-block p:last-child{margin-bottom:0;}
+
+  .pipeline{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:8px; overflow:hidden; margin:8px 0;}
+  @media (max-width:640px){ .pipeline{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:480px){ .pipeline{grid-template-columns:1fr;} }
+  .stage{background:var(--surface); padding:16px 16px 14px;}
+  .stage .n{font-family:var(--mono); font-size:0.68rem; color:var(--signal-deep); letter-spacing:.08em;}
+  .stage h3{font-family:var(--display); font-weight:700; font-size:0.98rem; margin:6px 0 6px; color:var(--ink);}
+  .stage p{font-size:0.82rem; color:var(--ink-dim); margin:0;}
+  .stage .gate{display:inline-block; font-family:var(--mono); font-size:0.66rem; letter-spacing:.03em; color:var(--pending); background:var(--pending-bg); border-radius:4px; padding:2px 6px; margin-top:8px;}
+
+  .princ-list{margin:8px 0 0; padding:0; list-style:none; display:grid; grid-template-columns:repeat(2,1fr); gap:16px 32px; max-width:76ch;}
+  @media (max-width:640px){ .princ-list{grid-template-columns:1fr;} }
+  .princ-list li{border-top:1px solid var(--line); padding-top:10px;}
+  .princ-list b{display:block; color:var(--ink); font-weight:700; font-size:0.95rem; margin-bottom:4px;}
+  .princ-list span{font-size:0.85rem; color:var(--ink-dim);}
+
   footer{margin-top:56px; padding-top:22px; border-top:1px solid var(--line); font-size:0.8rem; color:var(--ink-dim);}
   footer p{max-width:74ch; margin:0 0 8px;}
   @media (max-width:520px){ .wrap{padding-block:34px 50px;} }
@@ -69,14 +89,53 @@
   </section>
 
   <section>
+    <h2>Jobs to be done, not features</h2>
+    <p class="lede">Every screen is scoped against a single job statement before any layout gets drawn &mdash; a plain verb, a concrete object, and a quiet contextual clarifier, scored against an internal JTBD framework rather than a feature wishlist. Two examples, unedited from the design pack:</p>
+    <div class="jtbd-block">
+      <span class="jtbd-label">Homeowner result screen</span>
+      <p>"Check whether my county value looks out of line and what an appeal could change, as a range I understand, before I decide."</p>
+    </div>
+    <div class="jtbd-block">
+      <span class="jtbd-label">Analyst queue screen</span>
+      <p>"Pick the parcels worth an analyst's time this season by their evidence components, not a single rank."</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>The screen flow</h2>
+    <p class="lede" style="margin-bottom:0;">Six screens, in the order a parcel actually moves through them. Each carries its own honest build status &mdash; nothing here is presented as further along than it is.</p>
+    <div class="pipeline">
+      <div class="stage"><div class="n">01</div><h3>Homeowner result</h3><p>A savings range with a plain reason for its width, not a single number sold as certain.</p><span class="gate">Prototype only</span></div>
+      <div class="stage"><div class="n">02</div><h3>Analyst queue</h3><p>Cases ranked by evidence components, not one opaque score.</p><span class="gate">CSV export first</span></div>
+      <div class="stage"><div class="n">03</div><h3>Parcel evidence</h3><p>Every fact tagged with its certainty state before a person acts on it.</p><span class="gate">Ready to extend</span></div>
+      <div class="stage"><div class="n">04</div><h3>Field plays</h3><p>An outreach action the data can honestly support, gated until every guardrail clears.</p><span class="gate">Static preview first</span></div>
+      <div class="stage"><div class="n">05</div><h3>Load report</h3><p>Whether a data load is complete enough to call current &mdash; reconciled files, zeroed gates, nothing missing unlisted.</p><span class="gate">Report, not an app</span></div>
+      <div class="stage"><div class="n">06</div><h3>Uniformity monitor</h3><p>Where assessment uniformity looks weak for a study window, with sample sizes shown so nobody reads it as a finding.</p><span class="gate">Blocked on a partner</span></div>
+    </div>
+  </section>
+
+  <section>
     <h2>Four evidence states</h2>
-    <p class="lede" style="margin-bottom:0;">Every value on screen carries a label for where it came from, so a gap in the data is never presented as an answer. The design specifies that Unknown must never be silently displayed as zero or no.</p>
+    <p class="lede" style="margin-bottom:0;">Every value on screen carries a label for where it came from, so a gap in the data is never presented as an answer. Each state's visual weight fades with its certainty &mdash; solid, solid, dashed, dotted &mdash; so the distinction still reads in grayscale or under a screen reader, not by color alone. The design specifies that Unknown must never be silently displayed as zero or no.</p>
     <div class="evidence-grid">
       <div class="evidence-cell"><div class="n">County record</div><p>The county supplied the value &mdash; not proof someone independently verified the real-world fact.</p></div>
       <div class="evidence-cell"><div class="n">Verified by staff</div><p>A person checked this specific value against the underlying record.</p></div>
       <div class="evidence-cell"><div class="n">Estimated</div><p>Modeled from available data, shown as a range where a single figure would be misleading.</p></div>
       <div class="evidence-cell"><div class="n">Unknown</div><p>Not silently shown as zero or no &mdash; the gap itself is the information.</p></div>
     </div>
+  </section>
+
+  <section>
+    <h2>Design principles, and the rule each one produces</h2>
+    <p class="lede" style="margin-bottom:0;">Twelve principles govern the pack; each one is written down next to the concrete interface rule it forces, so a principle can't stay a slogan.</p>
+    <ul class="princ-list">
+      <li><b>Plain language first.</b><span>Financial mechanics open with a three-sentence explanation and one worked example, before any table or chart appears.</span></li>
+      <li><b>Honest uncertainty, everywhere.</b><span>The same four-state ladder, icon plus text, never color alone. Unknown always names its reason.</span></li>
+      <li><b>Outreach ethics enforced by the UI.</b><span>A send or approve action stays disabled while any guardrail is unresolved, and its label names the blocker.</span></li>
+      <li><b>Progressive disclosure; reuse before build.</b><span>Summary first, detail on request. Extend an existing component before building anything parallel to it.</span></li>
+      <li><b>Backend complexity is acceptable. User complexity is not.</b><span>Every screen states what it must show and what to leave out. Adding an item means removing one.</span></li>
+      <li><b>Accessibility is a floor, not a stretch goal.</b><span>WCAG 2.2 AA: visible focus rings, 44px touch targets, a table twin for every chart, reduced motion honored.</span></li>
+    </ul>
   </section>
 
   <section>
