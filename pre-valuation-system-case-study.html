@@ -47,6 +47,13 @@
   @media (max-width:640px){ .impact-band{grid-template-columns:1fr;} }
   .impact-tile{background:var(--surface); padding:16px 18px;}
   .impact-tile .v{font-family:var(--mono); font-weight:700; font-size:1.15rem; color:var(--gold); font-variant-numeric:tabular-nums;}
+
+  .chart-wrap{margin-top:20px;}
+  .chart-svg{width:100%; height:auto; display:block; max-width:480px;}
+  .chart-svg .axis-line{stroke:var(--line-strong); stroke-width:1;}
+  .chart-svg .axis-label{font-family:var(--mono); font-size:10px; fill:var(--ink-dim);}
+  .chart-svg .bar-value{font-family:var(--mono); font-weight:700; font-size:13px; fill:var(--ink); font-variant-numeric:tabular-nums;}
+  .chart-svg .mark-ratio{fill:var(--gold);}
   .impact-tile{border-top:3px solid var(--orange);}
   .impact-tile .l{font-size:0.78rem; color:var(--ink-dim); margin-top:4px;}
 
@@ -83,6 +90,21 @@
       <div class="impact-tile"><div class="v">$621.0M &rarr; $760.6M</div><div class="l">Certified digest value, same cycle</div></div>
     </div>
     <p class="lede" style="margin-top:18px;">The same digest correction also reduced what the county owes annually toward its state school-funding formula obligation, since that calculation runs off the same digest and timber figures. That relief is real but genuinely hard to isolate to a clean dollar figure &mdash; it spans two different study years and is gross of a statewide cap that isn't independently confirmed &mdash; so it's described here rather than quoted as a number.</p>
+
+    <div class="chart-wrap">
+      <svg viewBox="0 0 560 220" role="img" aria-label="Equalized sales ratio across three checkpoints: before recalibration, preliminary study, and final corrected" class="chart-svg">
+        <rect x="82.5" y="79.2" width="90" height="106.8" rx="4" class="mark-ratio"><title>Before recalibration: 20.59</title></rect>
+        <text x="127.5" y="71.2" class="bar-value" text-anchor="middle">20.59</text>
+        <text x="127.5" y="206" class="axis-label" text-anchor="middle">Before recalibration</text>
+        <rect x="235.0" y="41.4" width="90" height="144.6" rx="4" class="mark-ratio"><title>Preliminary study: 27.87</title></rect>
+        <text x="280.0" y="33.4" class="bar-value" text-anchor="middle">27.87</text>
+        <text x="280.0" y="206" class="axis-label" text-anchor="middle">Preliminary study</text>
+        <rect x="387.5" y="37.7" width="90" height="148.3" rx="4" class="mark-ratio"><title>Final, corrected: 28.58</title></rect>
+        <text x="432.5" y="29.7" class="bar-value" text-anchor="middle">28.58</text>
+        <text x="432.5" y="206" class="axis-label" text-anchor="middle">Final, corrected</text>
+        <line x1="20" y1="186" x2="540" y2="186" class="axis-line"/>
+      </svg>
+    </div>
   </section>
 
   <section>
