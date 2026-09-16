@@ -1,0 +1,127 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="robots" content="noindex,nofollow,noarchive,nosnippet"><meta name="viewport" content="width=device-width, initial-scale=1"><title>More People Than Registered</title></head><body>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,600&family=Source+Sans+3:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+  :root{
+    --royal:#1E4FD8; --blue-dk:#1233A6; --navy:#0F1B3D; --gold:#E8B000;
+    --paper:#F5F6F8; --tint:#EEF2FB; --rule:#DDE2EC;
+    --surface:#FFFFFF; --ink:var(--navy); --ink-dim:#5B6479; --line:var(--rule); --line-strong:#C7CEDC;
+    --good:#0E7A6E; --good-bg:#E3F3F1;
+    --heading:"Playfair Display",Georgia,serif; --body:"Source Sans 3",-apple-system,sans-serif; --mono:"IBM Plex Mono",ui-monospace,monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#12151D; --surface:#1B1F2B; --tint:#1B2338; --ink:#E7E9F0; --ink-dim:#9AA3BA;
+      --line:#2C3242; --line-strong:#3A4258; --royal:#6C8FF0; --blue-dk:#8FA8F5; --navy:#C7D0EC; --gold:#F0C64D;
+      --good:#4FBFA9; --good-bg:#153531;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#12151D; --surface:#1B1F2B; --tint:#1B2338; --ink:#E7E9F0; --ink-dim:#9AA3BA;
+    --line:#2C3242; --line-strong:#3A4258; --royal:#6C8FF0; --blue-dk:#8FA8F5; --navy:#C7D0EC; --gold:#F0C64D;
+    --good:#4FBFA9; --good-bg:#153531;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background-color:var(--paper); color:var(--ink); font-family:var(--body); line-height:1.6; padding:0 20px;
+    background-image:
+      repeating-linear-gradient(0deg, color-mix(in srgb, var(--line) 55%, transparent) 0, color-mix(in srgb, var(--line) 55%, transparent) 1px, transparent 1px, transparent 40px),
+      repeating-linear-gradient(90deg, color-mix(in srgb, var(--line) 55%, transparent) 0, color-mix(in srgb, var(--line) 55%, transparent) 1px, transparent 1px, transparent 40px);
+  }
+  .wrap{max-width:820px; margin:0 auto; padding-block:46px 70px;}
+  a{color:var(--royal);}
+
+  .eyebrow{font-family:var(--mono); font-size:0.72rem; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-dim); margin:0;}
+  .back{font-family:var(--mono); font-size:0.78rem; text-decoration:none; color:var(--ink-dim); border-bottom:1px solid var(--line); display:inline-block; margin-bottom:22px;}
+  .back:hover{color:var(--royal); border-color:var(--royal);}
+  .brandmark{display:flex; align-items:baseline; gap:8px; margin-bottom:12px; font-family:var(--heading); font-weight:700; font-size:1.02rem; color:var(--navy);}
+  .brandmark em{font-style:italic; color:var(--royal); font-weight:600;}
+  h1{font-family:var(--heading); font-weight:700; font-size:clamp(1.9rem,5vw,2.7rem); line-height:1.12; margin:0 0 14px; color:var(--navy); text-wrap:balance;}
+  p.dek{font-size:1.08rem; color:var(--ink-dim); max-width:62ch; margin:0;}
+
+  section{margin-top:48px;}
+  h2{font-family:var(--heading); font-weight:700; font-size:clamp(1.3rem,3vw,1.6rem); color:var(--ink); margin:0 0 18px;}
+  .lede{font-size:1.02rem; max-width:66ch;}
+  .lede + .lede{margin-top:12px;}
+
+  .impact-band{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:8px; overflow:hidden; margin-top:22px;}
+  @media (max-width:640px){ .impact-band{grid-template-columns:1fr;} }
+  .impact-tile{background:var(--surface); padding:16px 18px; border-top:3px solid var(--gold);}
+  .impact-tile .v{font-family:var(--mono); font-weight:700; font-size:1.15rem; color:var(--blue-dk); font-variant-numeric:tabular-nums;}
+  .impact-tile .l{font-size:0.78rem; color:var(--ink-dim); margin-top:4px;}
+
+  .pipeline{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:8px; overflow:hidden; margin:22px 0;}
+  @media (max-width:640px){ .pipeline{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:480px){ .pipeline{grid-template-columns:1fr;} }
+  .stage{background:var(--surface); padding:16px 16px 14px;}
+  .stage .n{font-family:var(--mono); font-size:0.68rem; color:var(--royal); letter-spacing:.08em;}
+  .stage h3{font-family:var(--heading); font-weight:700; font-size:0.98rem; margin:6px 0 6px; color:var(--ink);}
+  .stage p{font-size:0.82rem; color:var(--ink-dim); margin:0;}
+
+  .guard-list{margin:0; padding-left:1.15rem; display:flex; flex-direction:column; gap:10px; max-width:66ch;}
+  .guard-list li{font-size:0.97rem;}
+  .guard-list b{color:var(--ink); font-weight:600;}
+
+  .arc{display:flex; flex-wrap:wrap; gap:10px; margin-top:18px;}
+  .arc span{background:var(--tint); border:1px solid var(--line); border-radius:20px; padding:6px 14px; font-family:var(--mono); font-size:0.78rem; color:var(--blue-dk);}
+  .arc .sep{border:none; background:none; color:var(--ink-dim); padding:6px 0;}
+
+  footer{margin-top:56px; padding-top:22px; border-top:1px solid var(--line); font-size:0.8rem; color:var(--ink-dim);}
+  footer p{max-width:74ch; margin:0 0 8px;}
+  @media (max-width:520px){ .wrap{padding-block:34px 50px;} }
+</style>
+
+<div class="wrap">
+  <a class="back" href="alvin-slate-profile.html">&larr; Alvin Slate</a>
+  <div class="brandmark">EYLU <em>Real Estate Club</em></div>
+  <p class="eyebrow">EYLU Real Estate Club &middot; President case study</p>
+  <h1>More people than registered</h1>
+  <p class="dek">One session in March 2026 had 37 people register and 75 show up. That's not a fluke of a good topic &mdash; it's what a curriculum built as a repeatable pipeline looks like when it's working: the same design system, run across nine regional chapters, tracked closely enough to know what actually moved the room.</p>
+
+  <section>
+    <h2>The result</h2>
+    <div class="impact-band">
+      <div class="impact-tile"><div class="v">203%</div><div class="l">Show-up rate against registration, March 2026 &mdash; the strongest conversion of the year on record</div></div>
+      <div class="impact-tile"><div class="v">9</div><div class="l">Regional chapters running the same curriculum, one design system</div></div>
+      <div class="impact-tile"><div class="v">763</div><div class="l">Community engagement (likes + comments) across 39 posts, Jul&ndash;Aug 2026</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>How the pipeline works</h2>
+    <p class="lede">A session isn't written from scratch each month. It moves through the same six stages every time, so the quality doesn't depend on who has time that week.</p>
+    <div class="pipeline">
+      <div class="stage"><div class="n">01</div><h3>Research, verified</h3><p>Every figure that goes into a session gets checked against its own source before it's used &mdash; a rate, a program, a market stat &mdash; not repeated because it sounded right.</p></div>
+      <div class="stage"><div class="n">02</div><h3>Design the arc</h3><p>Topics run as a multi-session arc with a real endpoint, not one-off talks. Members are meant to move from curious to positioned, not just informed.</p></div>
+      <div class="stage"><div class="n">03</div><h3>Build the kit once</h3><p>A session's materials &mdash; the setup, the posting plan, the slides, the flyer &mdash; get built once and reused by every host and channel, instead of redone from scratch each time.</p></div>
+      <div class="stage"><div class="n">04</div><h3>Deliver across chapters</h3><p>The same curriculum runs across nine regional chapters and multiple hosts, so a member gets the same quality wherever they show up.</p></div>
+      <div class="stage"><div class="n">05</div><h3>Measure what happened</h3><p>Registrations, attendees, and peak concurrent viewers are tracked separately, every session &mdash; not estimated after the fact.</p></div>
+      <div class="stage"><div class="n">06</div><h3>Feed it back</h3><p>Whatever content actually drove engagement shapes what gets covered next, instead of repeating a format because it's familiar.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>The arc, in practice</h2>
+    <p class="lede">A two-session series on real estate syndications is a clean example of stage 02 working as designed: each session had a specific job, and the data shows members actually moved through it.</p>
+    <div class="arc">
+      <span>LP path</span><span class="sep">&rarr;</span><span>Sponsor's chair</span><span class="sep">&rarr;</span><span>Decision point</span><span class="sep">&rarr;</span><span>Next step</span>
+    </div>
+    <p class="lede" style="margin-top:18px;">The first session ran a 94% show-up rate; the second ran 160%, the strongest single-session pull of the year. Together they logged the strongest two-month attendance average of 2026, and the top-performing community post &mdash; a real underwriting example, not a generic explainer &mdash; outperformed every polished, pre-written post in the same window. The lesson that shaped later sessions: proof beats theory, every time it's been tested.</p>
+  </section>
+
+  <section>
+    <h2>Standing rules</h2>
+    <ul class="guard-list">
+      <li><b>No figure ships unverified.</b> Every statistic in a session or a post traces to a named, dated source before it's used.</li>
+      <li><b>Attendees and peak concurrent are two different numbers.</b> Conflating them overstates reach; both get reported, never just the bigger one.</li>
+      <li><b>No guest or story goes out before it's confirmed.</b> A name doesn't appear in promotion until the person behind it has signed off.</li>
+      <li><b>The brand is "EYLU," never shortened.</b> Small, but it's the kind of consistency that compounds across nine chapters and multiple hosts.</li>
+    </ul>
+  </section>
+
+  <footer>
+    <p>Attendance and engagement figures above are drawn from the club's own session tracker and community-post exports; individual hosts, guests, and club staff are not named here by design. This page is unlisted and shared by direct link only.</p>
+  </footer>
+</div>
+</body></html>
