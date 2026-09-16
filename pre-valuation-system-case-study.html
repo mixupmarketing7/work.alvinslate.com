@@ -79,7 +79,7 @@
   <section>
     <h2>The result</h2>
     <div class="impact-band" style="grid-template-columns:repeat(2,1fr);">
-      <div class="impact-tile"><div class="v">20.59 &rarr; 28.58</div><div class="l">Equalized sales ratio, before and after recalibration</div></div>
+      <div class="impact-tile"><div class="v">20.59 &rarr; 28.58</div><div class="l">Equalized sales ratio, before recalibration and after correction</div></div>
       <div class="impact-tile"><div class="v">$621.0M &rarr; $760.6M</div><div class="l">Certified digest value, same cycle</div></div>
     </div>
     <p class="lede" style="margin-top:18px;">The same digest correction also reduced what the county owes annually toward its state school-funding formula obligation, since that calculation runs off the same digest and timber figures. That relief is real but genuinely hard to isolate to a clean dollar figure &mdash; it spans two different study years and is gross of a statewide cap that isn't independently confirmed &mdash; so it's described here rather than quoted as a number.</p>
@@ -118,4 +118,42 @@
     <p>Figures above are the county's certified outcome, drawn from the adopted digest and DOAA determination records. The specific county and contract terms are withheld here by design. This page is unlisted and shared by direct link only.</p>
   </footer>
 </div>
+<script>
+(function(){
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var nums = document.querySelectorAll('.impact-tile .v');
+  function animate(el){
+    var original = el.textContent;
+    var matches = [];
+    var re = /\d+(\.\d+)?/g, m;
+    while ((m = re.exec(original))) matches.push(m);
+    if (!matches.length) return;
+    var duration = 1900, start = null;
+    function frame(ts){
+      if (start === null) start = ts;
+      var t = Math.min(1, (ts - start) / duration);
+      var eased = 1 - Math.pow(1 - t, 3);
+      var out = '', last = 0;
+      matches.forEach(function(mm){
+        var target = parseFloat(mm[0]);
+        var decimals = mm[0].indexOf('.') > -1 ? mm[0].split('.')[1].length : 0;
+        out += original.slice(last, mm.index) + (target * eased).toFixed(decimals);
+        last = mm.index + mm[0].length;
+      });
+      out += original.slice(last);
+      el.textContent = out;
+      if (t < 1) requestAnimationFrame(frame); else el.textContent = original;
+    }
+    requestAnimationFrame(frame);
+  }
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting) { animate(entry.target); io.unobserve(entry.target); }
+      });
+    }, {threshold:0.4});
+    nums.forEach(function(el){ io.observe(el); });
+  }
+})();
+</script>
 </body></html>
