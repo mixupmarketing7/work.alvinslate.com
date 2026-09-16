@@ -67,6 +67,34 @@
   .arc span{background:var(--tint); border:1px solid var(--line); border-radius:20px; padding:6px 14px; font-family:var(--mono); font-size:0.78rem; color:var(--blue-dk);}
   .arc .sep{border:none; background:none; color:var(--ink-dim); padding:6px 0;}
 
+  .chart-wrap{margin-top:14px;}
+  .chart-legend{display:flex; gap:20px; font-family:var(--mono); font-size:0.78rem; color:var(--ink-dim); margin-bottom:10px;}
+  .chart-legend span{display:inline-flex; align-items:center; gap:7px;}
+  .chart-legend i{width:10px; height:10px; border-radius:2px; display:inline-block;}
+  .chart-legend .lc-reg{background:#A67C00;}
+  .chart-legend .lc-att{background:#1E4FD8;}
+  @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ } }
+  .chart-svg{width:100%; height:auto; display:block;}
+  .chart-svg .gridline{stroke:var(--line); stroke-width:1;}
+  .chart-svg .axis-line{stroke:var(--line-strong); stroke-width:1;}
+  .chart-svg .axis-label{font-family:var(--mono); font-size:10px; fill:var(--ink-dim);}
+  .chart-svg .mark-reg{fill:#A67C00;}
+  .chart-svg .mark-att{fill:#1E4FD8;}
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]) .chart-svg .mark-reg{fill:#C08A1A;}
+    :root:not([data-theme="light"]) .chart-svg .mark-att{fill:#6C8FF0;}
+    :root:not([data-theme="light"]) .chart-legend .lc-reg{background:#C08A1A;}
+    :root:not([data-theme="light"]) .chart-legend .lc-att{background:#6C8FF0;}
+  }
+  :root[data-theme="dark"] .chart-svg .mark-reg{fill:#C08A1A;}
+  :root[data-theme="dark"] .chart-svg .mark-att{fill:#6C8FF0;}
+  :root[data-theme="dark"] .chart-legend .lc-reg{background:#C08A1A;}
+  :root[data-theme="dark"] .chart-legend .lc-att{background:#6C8FF0;}
+  .chart-table-toggle{font-family:var(--mono); font-size:0.76rem; color:var(--ink-dim); margin-top:8px; cursor:pointer;}
+  .chart-table{width:100%; border-collapse:collapse; margin-top:10px; font-size:0.85rem;}
+  .chart-table th, .chart-table td{padding:6px 10px; border-bottom:1px solid var(--line); text-align:right; font-variant-numeric:tabular-nums;}
+  .chart-table th:first-child, .chart-table td:first-child{text-align:left;}
+
   footer{margin-top:56px; padding-top:22px; border-top:1px solid var(--line); font-size:0.8rem; color:var(--ink-dim);}
   footer p{max-width:74ch; margin:0 0 8px;}
   @media (max-width:520px){ .wrap{padding-block:34px 50px;} }
@@ -85,6 +113,62 @@
       <div class="impact-tile"><div class="v">203%</div><div class="l">Show-up rate against registration, March 2026 &mdash; the strongest conversion of the year on record</div></div>
       <div class="impact-tile"><div class="v">9</div><div class="l">Regional chapters running the same curriculum, one design system</div></div>
       <div class="impact-tile"><div class="v">763</div><div class="l">Community engagement (likes + comments) across 39 posts, Jul&ndash;Aug 2026</div></div>
+    </div>
+
+    <div class="chart-wrap">
+      <div class="chart-legend"><span><i class="lc-reg"></i>Registrations</span><span><i class="lc-att"></i>Attendees</span></div>
+      <svg viewBox="0 0 720 300" role="img" aria-label="Registrations versus attendees, eight 2026 sessions" class="chart-svg">
+        <line x1="40" y1="266.0" x2="710" y2="266.0" class="gridline"/>
+        <text x="32" y="270.0" class="axis-label" text-anchor="end">0</text>
+        <line x1="40" y1="204.5" x2="710" y2="204.5" class="gridline"/>
+        <text x="32" y="208.5" class="axis-label" text-anchor="end">25</text>
+        <line x1="40" y1="143.0" x2="710" y2="143.0" class="gridline"/>
+        <text x="32" y="147.0" class="axis-label" text-anchor="end">50</text>
+        <line x1="40" y1="81.5" x2="710" y2="81.5" class="gridline"/>
+        <text x="32" y="85.5" class="axis-label" text-anchor="end">75</text>
+        <line x1="40" y1="20.0" x2="710" y2="20.0" class="gridline"/>
+        <text x="32" y="24.0" class="axis-label" text-anchor="end">100</text>
+        <rect x="65.9" y="143.0" width="14" height="123.0" rx="3" class="mark-reg"><title>Jan 2026: 50 registered</title></rect>
+        <rect x="83.9" y="101.2" width="14" height="164.8" rx="3" class="mark-att"><title>Jan 2026: 67 attended</title></rect>
+        <text x="81.9" y="288" class="axis-label" text-anchor="middle">Jan</text>
+        <rect x="149.6" y="79.0" width="14" height="187.0" rx="3" class="mark-reg"><title>Feb 2026: 76 registered</title></rect>
+        <rect x="167.6" y="79.0" width="14" height="187.0" rx="3" class="mark-att"><title>Feb 2026: 76 attended</title></rect>
+        <text x="165.6" y="288" class="axis-label" text-anchor="middle">Feb</text>
+        <rect x="233.4" y="175.0" width="14" height="91.0" rx="3" class="mark-reg"><title>Mar 2026: 37 registered</title></rect>
+        <rect x="251.4" y="81.5" width="14" height="184.5" rx="3" class="mark-att"><title>Mar 2026: 75 attended</title></rect>
+        <text x="249.4" y="288" class="axis-label" text-anchor="middle">Mar</text>
+        <rect x="317.1" y="162.7" width="14" height="103.3" rx="3" class="mark-reg"><title>Apr 2026: 42 registered</title></rect>
+        <rect x="335.1" y="170.1" width="14" height="95.9" rx="3" class="mark-att"><title>Apr 2026: 39 attended</title></rect>
+        <text x="333.1" y="288" class="axis-label" text-anchor="middle">Apr</text>
+        <rect x="400.9" y="113.5" width="14" height="152.5" rx="3" class="mark-reg"><title>May 2026: 62 registered</title></rect>
+        <rect x="418.9" y="123.3" width="14" height="142.7" rx="3" class="mark-att"><title>May 2026: 58 attended</title></rect>
+        <text x="416.9" y="288" class="axis-label" text-anchor="middle">May</text>
+        <rect x="484.6" y="130.7" width="14" height="135.3" rx="3" class="mark-reg"><title>Jun 2026: 55 registered</title></rect>
+        <rect x="502.6" y="49.5" width="14" height="216.5" rx="3" class="mark-att"><title>Jun 2026: 88 attended</title></rect>
+        <text x="500.6" y="288" class="axis-label" text-anchor="middle">Jun</text>
+        <rect x="568.4" y="184.8" width="14" height="81.2" rx="3" class="mark-reg"><title>Jul 2026: 33 registered</title></rect>
+        <rect x="586.4" y="64.3" width="14" height="201.7" rx="3" class="mark-att"><title>Jul 2026: 82 attended</title></rect>
+        <text x="584.4" y="288" class="axis-label" text-anchor="middle">Jul</text>
+        <rect x="652.1" y="143.0" width="14" height="123.0" rx="3" class="mark-reg"><title>Aug 2026: 50 registered</title></rect>
+        <rect x="670.1" y="76.6" width="14" height="189.4" rx="3" class="mark-att"><title>Aug 2026: 77 attended</title></rect>
+        <text x="668.1" y="288" class="axis-label" text-anchor="middle">Aug</text>
+        <line x1="40" y1="266" x2="710" y2="266" class="axis-line"/>
+      </svg>
+      <details><summary class="chart-table-toggle">View as table</summary>
+        <table class="chart-table">
+          <thead><tr><th>Month, 2026</th><th>Registrations</th><th>Attendees</th></tr></thead>
+          <tbody>
+            <tr><td>January</td><td>50</td><td>67</td></tr>
+            <tr><td>February</td><td>76</td><td>76</td></tr>
+            <tr><td>March</td><td>37</td><td>75</td></tr>
+            <tr><td>April</td><td>42</td><td>39</td></tr>
+            <tr><td>May</td><td>62</td><td>58</td></tr>
+            <tr><td>June</td><td>55</td><td>88</td></tr>
+            <tr><td>July</td><td>33</td><td>82</td></tr>
+            <tr><td>August</td><td>50</td><td>77</td></tr>
+          </tbody>
+        </table>
+      </details>
     </div>
   </section>
 
