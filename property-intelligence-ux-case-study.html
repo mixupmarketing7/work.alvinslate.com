@@ -1,0 +1,101 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="robots" content="noindex,nofollow,noarchive,nosnippet"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Designing for the Decision, Not the Dataset</title></head><body>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800;900&family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+  :root{
+    --paper:#F1F1EC; --surface:#FFFFFF; --surface-2:#E9E9E1;
+    --ink:#1C1B17; --ink-dim:#5C5A50; --signal:#B5540C; --signal-deep:#7A3707;
+    --line:#DEDDD1; --line-strong:#C7C6B7; --pending:#8A6A1E; --pending-bg:#F1ECDD;
+    --display:'Big Shoulders Display','Arial Narrow',sans-serif; --body:'Newsreader',Georgia,'Times New Roman',serif; --mono:'IBM Plex Mono',ui-monospace,'SF Mono',Menlo,monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#141310; --surface:#1C1A15; --surface-2:#242119; --ink:#EDEBE2; --ink-dim:#A9A599;
+      --signal:#E08A45; --signal-deep:#F0A868; --line:#332F26; --line-strong:#433E30; --pending:#D9B65B; --pending-bg:#2A2414;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#141310; --surface:#1C1A15; --surface-2:#242119; --ink:#EDEBE2; --ink-dim:#A9A599;
+    --signal:#E08A45; --signal-deep:#F0A868; --line:#332F26; --line-strong:#433E30; --pending:#D9B65B; --pending-bg:#2A2414;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background-color:var(--paper); color:var(--ink); font-family:var(--body); line-height:1.6; padding:0 20px;
+    background-image:
+      repeating-linear-gradient(0deg, color-mix(in srgb, var(--line) 55%, transparent) 0, color-mix(in srgb, var(--line) 55%, transparent) 1px, transparent 1px, transparent 40px),
+      repeating-linear-gradient(90deg, color-mix(in srgb, var(--line) 55%, transparent) 0, color-mix(in srgb, var(--line) 55%, transparent) 1px, transparent 1px, transparent 40px);
+  }
+  .wrap{max-width:820px; margin:0 auto; padding-block:46px 70px;}
+  a{color:var(--signal-deep);}
+
+  .eyebrow{font-family:var(--mono); font-size:0.72rem; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-dim); margin:0 0 12px;}
+  .back{font-family:var(--mono); font-size:0.78rem; text-decoration:none; color:var(--ink-dim); border-bottom:1px solid var(--line); display:inline-block; margin-bottom:22px;}
+  .back:hover{color:var(--signal-deep); border-color:var(--signal);}
+  .stage-pill{display:inline-block; font-family:var(--mono); font-size:0.68rem; letter-spacing:.04em; text-transform:uppercase; padding:3px 10px; border-radius:20px; background:var(--pending-bg); color:var(--pending); margin-bottom:16px;}
+  h1{font-family:var(--display); font-weight:800; font-style:italic; font-size:clamp(1.9rem,5vw,2.7rem); line-height:1.08; margin:0 0 14px; color:var(--ink); text-wrap:balance;}
+  p.dek{font-size:1.08rem; color:var(--ink-dim); max-width:62ch; margin:0;}
+
+  section{margin-top:48px;}
+  h2{font-family:var(--display); font-weight:700; font-size:clamp(1.3rem,3vw,1.6rem); color:var(--ink); margin:0 0 18px;}
+  .lede{font-size:1.02rem; max-width:66ch;}
+  .lede + .lede{margin-top:12px;}
+
+  .evidence-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:8px; overflow:hidden; margin-top:8px;}
+  @media (max-width:640px){ .evidence-grid{grid-template-columns:repeat(2,1fr);} }
+  .evidence-cell{background:var(--surface); padding:16px 14px;}
+  .evidence-cell .n{font-family:var(--display); font-weight:700; font-size:1.02rem; color:var(--ink);}
+  .evidence-cell p{font-size:0.82rem; color:var(--ink-dim); margin:6px 0 0;}
+
+  .decision-list{margin:0; padding-left:1.15rem; display:flex; flex-direction:column; gap:10px; max-width:66ch;}
+  .decision-list li{font-size:0.97rem;}
+  .decision-list b{color:var(--ink); font-weight:600;}
+
+  footer{margin-top:56px; padding-top:22px; border-top:1px solid var(--line); font-size:0.8rem; color:var(--ink-dim);}
+  footer p{max-width:74ch; margin:0 0 8px;}
+  @media (max-width:520px){ .wrap{padding-block:34px 50px;} }
+</style>
+
+<div class="wrap">
+  <a class="back" href="alvin-slate-profile.html">&larr; Alvin Slate</a>
+  <p class="eyebrow">Property Intelligence UX &middot; Design and validation planning &middot; September 2026</p>
+  <span class="stage-pill">Design stage &middot; not yet built</span>
+  <h1>Designing for the decision, not the dataset</h1>
+  <p class="dek">A county export can contain a great deal of data without answering the question a person actually has. A homeowner wants to know whether to request an assessment review. An analyst wants to identify a case worth working. A data operator needs to know whether a load is complete enough to publish. The challenge was serving those decisions without letting missing information look like certainty.</p>
+
+  <section>
+    <h2>The product work</h2>
+    <p class="lede">I developed seven journey and service-blueprint maps and six proposed screens, including future-use concepts that remain outside the current build. Each map connects one user's job to the information, actions, and supporting process needed at that step &mdash; not just what the county's data happens to contain.</p>
+  </section>
+
+  <section>
+    <h2>Four evidence states</h2>
+    <p class="lede" style="margin-bottom:0;">Every value on screen carries a label for where it came from, so a gap in the data is never presented as an answer. The design specifies that Unknown must never be silently displayed as zero or no.</p>
+    <div class="evidence-grid">
+      <div class="evidence-cell"><div class="n">County record</div><p>The county supplied the value &mdash; not proof someone independently verified the real-world fact.</p></div>
+      <div class="evidence-cell"><div class="n">Verified by staff</div><p>A person checked this specific value against the underlying record.</p></div>
+      <div class="evidence-cell"><div class="n">Estimated</div><p>Modeled from available data, shown as a range where a single figure would be misleading.</p></div>
+      <div class="evidence-cell"><div class="n">Unknown</div><p>Not silently shown as zero or no &mdash; the gap itself is the information.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Decisions before implementation</h2>
+    <ul class="decision-list">
+      <li><b>Analyst queue:</b> the plan recommends starting with a CSV export before investing in another interface.</li>
+      <li><b>Load review:</b> a report is recommended over a separate application.</li>
+      <li><b>Homeowner savings estimate:</b> specifies a range rather than a single figure when missing homestead information would make one figure indefensible.</li>
+      <li><b>Data boundaries:</b> consumer appeal information is not repurposed into a real estate prospecting list, and government-service views stay separate from consumer screening and marketing segments.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Tests that can change the plan</h2>
+    <p class="lede">The research plan defines low-cost tests and pass/fail criteria before testing, not after. One proposed homeowner exercise checks whether participants can explain why a savings range is wide. A proposed analyst test checks whether the evidence-state labels help staff choose cases consistently and efficiently. A failed test leads to revision or a narrower scope, not an assumption that the feature should ship anyway.</p>
+  </section>
+
+  <footer>
+    <p>This is a design-stage artifact, not a claim that all six screens have shipped or that the proposed research has run. Illustrative opportunity scores, sample personas, and hypothesized emotions are labeled as such throughout. The county is withheld here by design, consistent with the PRE case study's treatment of client-identifying detail. This page is unlisted and shared by direct link only.</p>
+  </footer>
+</div>
+</body></html>

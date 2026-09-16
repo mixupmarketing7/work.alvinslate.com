@@ -1,4 +1,4 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="robots" content="noindex,nofollow,noarchive,nosnippet"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Alvin Slate</title></head><body>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="robots" content="noindex,nofollow,noarchive,nosnippet"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Alvin Slate | Experience &amp; Selected Work</title></head><body>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800;900&family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
 
@@ -142,6 +142,8 @@
   .role-block ul{margin:10px 0 0; padding-left:1.1rem;}
   .role-block li{margin-bottom:7px; font-size:0.97rem;}
   .role-block li b{color:var(--ink); font-weight:600;}
+  .role-block .case-link{font-family:var(--mono); font-size:0.78rem; margin:12px 0 0; display:inline-block; color:var(--ink-dim); text-decoration:none; border-bottom:1px solid var(--line-strong);}
+  .role-block .case-link:hover{color:var(--signal-deep); border-color:var(--signal);}
 
   /* showcase cards */
   .cards{
@@ -248,12 +250,12 @@
       </div>
       <ul>
         <li><b>AI-native internal tooling:</b> personally designed and built a library of Claude-powered agent workflows (property valuation review, sales-ratio study analysis, lease review, contractor scope generation, deal underwriting) that run day-to-day service delivery, owning problem definition, guardrail design, evaluation, and iteration end to end.</li>
-        <li><b>County valuation system:</b> Georgia law lays out a specific sequence a county has to follow to recalibrate property values: verify the input data, diagnose where the ratio is failing, calibrate land first, model the cost and depreciation scenarios, validate each one for compliance, then deliver a board-ready package (O.C.G.A. &sect; 48-5-343). I built the system that runs that sequence. For one county whose residential cost model hadn't been recalibrated in years and whose state-audited sales ratio sat well under the legal floor, I rebuilt the underlying parcel and sales database (6,266 parcels, 23,710 sale records spanning a multi-year sales history), reconciled the cost model's median ratio to within about 1.4% of parity against real sales data, then ran a large scenario sweep that showed the model's shape was right and only its calibration was off. Every scenario gets validated against both Georgia statute and IAAO (International Association of Assessing Officers) dispersion standards before it's eligible for delivery, not just internally reviewed. That let us implement a phased rate correction instead of guessing at a new schedule. The certified digest moved from $621.0M to $760.6M and the equalized sales ratio from 20.59 to 28.58.</li>
-        <li><b>Sales-ratio audit reconciliation:</b> a separate Claude-driven workflow from the recalibration pipeline above. When that county's sales-ratio study was formally challenged, it pulled the disputed sample set and checked each one against the actual recorded deed instead of the field note that first went into the file, catching sales that had been logged on assumptions the deed didn't support. The state auditor's office reviewed the resulting corrections and put its own position in writing: the study, as revised, is correct.</li>
-        <li><b>Statistical rigor behind that system:</b> the validation layer is the real gate, not a formality. Every scenario has to clear Georgia's own compliance thresholds (coefficient of dispersion, price-related differential, assessment-ratio band) before it's even eligible to be recommended, and that check runs identically no matter which valuation model produced the scenario, so no method gets to grade its own homework. Every sale is stratified by property class and neighborhood, and the ratio study is diagnosed at the stratum level instead of a single countywide average. A portion of sales is held out and never touched during calibration, so the fit gets checked against data it hasn't seen. Replacement cost starts from national cost tables, then gets corrected against real local sales class by class, with the data support, method, and confidence behind every correction documented rather than applied as one blanket adjustment. Depreciation is fit from what the market actually shows on older properties, not assumed from a published table, and several depreciation methods get run and scored against each other rather than picked in advance. Nothing reaches the county without clearing a coverage threshold first; a partial-data result gets flagged as a pilot or blocked outright, never delivered quietly as final.</li>
+        <li><b>Recalibration pipeline:</b> Georgia law lays out a specific sequence a county has to follow to recalibrate property values &mdash; verify the input data, diagnose where the ratio is failing, calibrate land first, model cost and depreciation scenarios, validate each one for compliance, then deliver a board-ready package (O.C.G.A. &sect; 48-5-343). I built the system that runs that sequence, with every scenario validated against Georgia statute and IAAO dispersion standards before it's eligible for delivery, not just reviewed after the fact. For one county whose residential cost model hadn't been recalibrated in years, the certified digest moved from $621.0M to $760.6M and the equalized sales ratio from 20.59 to 28.58.</li>
+        <li><b>Reconciliation workflow:</b> a separate Claude-driven system from the pipeline above. When that county's sales-ratio study was formally challenged, it checked the disputed sample set against the actual recorded deed instead of the field note that first went into the file. The state auditor's office reviewed the resulting corrections and put its own position in writing: the study, as revised, is correct.</li>
         <li><b>Adoption-led rollout:</b> ran intake, training, and change management directly with the county's own assessment team, so the review process is something they can repeat without me in the room, not tooling I shipped and walked away from.</li>
         <li><b>Outcome ownership:</b> killed or reworked workflows that weren't delivering measured value instead of letting them linger; defined success metrics before build, not after.</li>
       </ul>
+      <p class="case-link"><a href="pre-valuation-system-case-study.html" target="_blank" rel="noopener">Case study: What the Deed Actually Said &rarr;</a></p>
     </div>
 
     <div class="role-block">
@@ -265,28 +267,32 @@
       <p class="subrole">Fractional COO &middot; EmpowerBuild (United Nations General Contracting LLC) &middot; 2025 &ndash; Present</p>
       <ul>
         <li><b>The result:</b> two silent pricing errors caught and fixed before a client ever saw them, and a signature near-miss (a revised contract sent for e-signature twice in the same hour) closed with a standing sign-off rule &mdash; from a pipeline that used to run every estimate ad hoc, with no single place a number had to be right.</li>
-        <li><b>How it works:</b> standardized the pipeline around one verified underwrite file per job, so the client-facing rate always drives the math, not the other way around. Photos, scanned property records, and design documents feed into that process; for Indianapolis jobs specifically, wall heights and perimeters come off the county assessor's own property card instead of a guess from a photo. Every rendered estimate gets a file-size check before it goes out the door, and scope changes now route through a formal change-order gate: cost and schedule impact get recorded and approved by both the customer and ownership before unfunded work starts, no verbal approval or silence counts as authorization. I also set the company's 20% markup standard, in place for every estimate issued since August 2026, and the numbering discipline (EST &rarr; CA &rarr; CO) that makes every revision a new, traceable file instead of an overwrite.</li>
+        <li><b>How it works:</b> standardized the pipeline around one verified underwrite file per job, so the client-facing rate always drives the math, not the other way around. Photos, scanned property records, and design documents feed into that process, with computer-vision-assisted document review and 2D floor-plan cross-checks against the county assessor's own property card &mdash; for Indianapolis jobs specifically, wall heights and perimeters come off that record instead of a guess from a photo. The workflow is designed to support a 24&ndash;48-hour estimate turnaround, not a guaranteed SLA. Every rendered estimate gets a file-size check before it goes out the door, and scope changes now route through a formal change-order gate: cost and schedule impact get recorded and approved by both the customer and ownership before unfunded work starts, no verbal approval or silence counts as authorization. I also set the company's 20% markup standard, in place for every estimate issued since August 2026, and the numbering discipline (EST &rarr; CA &rarr; CO) that makes every revision a new, traceable file instead of an overwrite.</li>
         <li><b>Bidding and subcontractor onboarding:</b> built a public, bilingual (English/Spanish) bid board that replaced ad hoc solicitation of trade-partner bids, paired with an onboarding pipeline that intakes applications, auto-files insurance and licensing documents, and pre-vets every subcontractor against a compliance checklist before a work order goes out. Solved a real compliance gap along the way: most one-person Indiana trades carry no workers'-comp policy, which under state law would otherwise make the general contractor their statutory employer if it went unaddressed, so I built two compliant paths into the standard intake &mdash; a workers'-comp certificate or the state's no-employee exemption &mdash; instead of turning away otherwise-good subcontractors.</li>
       </ul>
+      <p class="case-link"><a href="empowerbuild-estimating-system-case-study.html" target="_blank" rel="noopener">Case study: One Price, Checked Twice &rarr;</a></p>
       <p class="subrole">Fractional CMO &middot; Connected Minds LLC &middot; Nov 2023 &ndash; Present</p>
       <ul>
         <li>Ongoing engagement for Connected Minds, a mental health clinic, starting with website management while they were still virtual-only and expanding into full marketing as they opened their first physical office (grand opening, October 2024). Run their SEO, Google Ads, and Meta Ads; produce press releases and video content; and built a geo-targeted direct-mail campaign alongside event and out-of-home placements. The clinic reports their website as a primary source of new business, and their appointment-request form had logged 799 submissions as of September 2026.</li>
         <li>Holds a 5.0 average across 55+ Google reviews (independently checkable on Google); the clinic's own site also credits a BusinessRate Best Mental Health Clinic, Marietta award for 2025 and, as of this writing, 2026.</li>
       </ul>
+      <p class="case-link"><a href="connected-minds-engagement-case-study.html" target="_blank" rel="noopener">Case study: Rated Best, Two Years Running &rarr;</a></p>
     </div>
 
     <div class="role-block">
       <div class="role-head">
         <h3>Real Estate Investment Strategist and Analyst</h3>
         <span class="venture">Alvin Slate, Realtor (a DBA of Mixup Ltd Co) &middot; currently affiliated with eXp Realty</span>
-        <span class="role-dates">2021 &ndash; Present</span>
+        <span class="role-dates">2020 &ndash; Present</span>
       </div>
       <ul>
-        <li>Built a referral-driven residential and commercial practice from a standing start at licensure in 2021, carried it through HomeSmart and Coldwell Banker, and moved it to eXp Realty in 2023. The practice itself, Alvin Slate, Realtor, has run under my own company, Mixup Ltd Co, throughout.</li>
+        <li>Built a referral-driven residential and commercial practice from a standing start at licensure in 2020, carried it through HomeSmart and Coldwell Banker, and moved it to eXp Realty in 2023. The practice itself, Alvin Slate, Realtor, has run under my own company, Mixup Ltd Co, throughout.</li>
         <li>9 closings in 2023, 15 in 2024 ($64,381 in gross commission income across referral, sphere, and investor-ad sources), then 13 in 2025, my strongest year yet on cash volume (up 38% versus 2024).</li>
         <li><b>2026 pipeline:</b> 7 closings so far, 1 deal under contract, and 2 active listings running concurrently across residential and commercial engagements.</li>
         <li>Achieved Top Agent for Analytics and Most Prominent Agent, 2021, from Homes.com. Closed a probate estate sale 5% over asking price in 30 days.</li>
+        <li><b>Negotiating Room:</b> built a ZIP-level buyer-leverage index across four live metro markets (Atlanta, Indianapolis, Dallas&ndash;Fort Worth, Miami) from public housing data, verified byte-for-byte reproducible against source, and published under the attribution and no-charge terms the source data requires.</li>
       </ul>
+      <p class="case-link"><a href="negotiating-room-case-study.html" target="_blank" rel="noopener">Case study: A Rank, Not a Discount &rarr;</a></p>
     </div>
 
     <div class="role-block">
@@ -310,6 +316,7 @@
         <li>Lead a national real estate education community, co-hosted with two fellow investors, running live monthly sessions that average about 75 attendees across 9 regional metro chapters, from Atlanta to the DMV to South Florida.</li>
         <li>Building and evolving the club's curriculum is a sustained responsibility, not a one-time project: I designed the current 3-part "Development Series" on the ground-up construction and financing path for investors, on top of the club's existing session format. Community channels drew 39 posts and 763 total engagements (likes and comments) in a recent two-month window.</li>
       </ul>
+      <p class="case-link"><a href="eylu-curriculum-pipeline-case-study.html" target="_blank" rel="noopener">Case study: More People Than Registered &rarr;</a></p>
     </div>
 
     <div class="role-block">
@@ -394,13 +401,14 @@
           <li><b><a href="empowerbuild-estimating-system-case-study.html" target="_blank" rel="noopener">One Price, Checked Twice</a></b><span>EmpowerBuild: from ad hoc pricing to an auditable pipeline</span></li>
           <li><b><a href="connected-minds-engagement-case-study.html" target="_blank" rel="noopener">Rated Best, Two Years Running</a></b><span>Connected Minds: the marketing arc from virtual-only to a rated local clinic</span></li>
           <li><b><a href="eylu-curriculum-pipeline-case-study.html" target="_blank" rel="noopener">More People Than Registered</a></b><span>EYLU Real Estate Club: the curriculum pipeline behind nine regional chapters</span></li>
+          <li><b><a href="negotiating-room-case-study.html" target="_blank" rel="noopener">A Rank, Not a Discount</a></b><span>Negotiating Room: a ZIP-level buyer-leverage index across four live metros</span></li>
         </ul>
       </div>
       <div>
         <h4>Product &amp; data</h4>
         <ul>
-          <li><b><a href="https://claude.ai/artifact/3gGGR58ZnUUhg7jMU78wZx" target="_blank" rel="noopener">Property Intelligence UX</a></b><span>Product design pack: screens, journey maps, personas, data-provenance rules</span></li>
-          <li><b>Multi-Metro Data Maps</b><span>A reproducible sale-record pipeline verified exact against source data: <a href="https://claude.ai/artifact/PBCXWV8dZRZBPCib39JrVV" target="_blank" rel="noopener">Atlanta</a>, <a href="https://claude.ai/artifact/ALfQaSQNMGEZXVkrozfk1G" target="_blank" rel="noopener">Miami</a>, <a href="https://claude.ai/artifact/GDFrYWBkWFZ5FVJ2U65JSG" target="_blank" rel="noopener">Dallas&ndash;Fort Worth</a>, <a href="https://claude.ai/artifact/BnYsp6SLQdbuF4i43fUsyw" target="_blank" rel="noopener">Indianapolis</a></span></li>
+          <li><b><a href="property-intelligence-ux-case-study.html" target="_blank" rel="noopener">Property Intelligence UX</a></b><span>Design-stage product pack: screens, journey maps, personas, data-provenance rules</span></li>
+          <li><b>Negotiating Room, live maps</b><span>The four metro dashboards behind the case study above: <a href="https://claude.ai/artifact/PBCXWV8dZRZBPCib39JrVV" target="_blank" rel="noopener">Atlanta</a>, <a href="https://claude.ai/artifact/ALfQaSQNMGEZXVkrozfk1G" target="_blank" rel="noopener">Miami</a>, <a href="https://claude.ai/artifact/GDFrYWBkWFZ5FVJ2U65JSG" target="_blank" rel="noopener">Dallas&ndash;Fort Worth</a>, <a href="https://claude.ai/artifact/BnYsp6SLQdbuF4i43fUsyw" target="_blank" rel="noopener">Indianapolis</a></span></li>
         </ul>
       </div>
       <div>
