@@ -1,0 +1,127 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Two Years, One Real Address</title></head><body>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&family=Source+Sans+3:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+  :root{
+    --burgundy:#7A0C10; --burgundy-deep:#57080B; --paper:#FAF8F6; --surface:#FFFFFF; --surface-2:#F1E9E8;
+    --ink:#221415; --ink-dim:#6B5A5A; --line:#E6D9D8; --line-strong:#D3BFBE;
+    --good:#1F6B52; --good-bg:#E3F0EA; --gold:#9C7A1F; --gold-bg:#F3ECDB;
+    --heading:"Source Serif 4",Georgia,serif; --body:"Source Sans 3",-apple-system,sans-serif; --mono:"IBM Plex Mono",ui-monospace,monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --burgundy:#E0757A; --burgundy-deep:#EE9599; --paper:#171112; --surface:#211819; --surface-2:#2A1E1F;
+      --ink:#F0E6E6; --ink-dim:#B79E9E; --line:#3A2929; --line-strong:#4A3535;
+      --good:#6FC0A2; --good-bg:#173A2E; --gold:#D9B65B; --gold-bg:#2E2714;
+    }
+  }
+  :root[data-theme="dark"]{
+    --burgundy:#E0757A; --burgundy-deep:#EE9599; --paper:#171112; --surface:#211819; --surface-2:#2A1E1F;
+    --ink:#F0E6E6; --ink-dim:#B79E9E; --line:#3A2929; --line-strong:#4A3535;
+    --good:#6FC0A2; --good-bg:#173A2E; --gold:#D9B65B; --gold-bg:#2E2714;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0; background-color:var(--paper); color:var(--ink); font-family:var(--body); line-height:1.6; padding:0 20px;
+    background-image:
+      repeating-linear-gradient(0deg, color-mix(in srgb, var(--line) 55%, transparent) 0, color-mix(in srgb, var(--line) 55%, transparent) 1px, transparent 1px, transparent 40px),
+      repeating-linear-gradient(90deg, color-mix(in srgb, var(--line) 55%, transparent) 0, color-mix(in srgb, var(--line) 55%, transparent) 1px, transparent 1px, transparent 40px);
+  }
+  .wrap{max-width:800px; margin:0 auto; padding-block:46px 70px;}
+  a{color:var(--burgundy-deep);}
+
+  .eyebrow{font-family:var(--mono); font-size:0.72rem; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-dim); margin:0;}
+  .back{font-family:var(--mono); font-size:0.78rem; text-decoration:none; color:var(--ink-dim); border-bottom:1px solid var(--line); display:inline-block; margin-bottom:22px;}
+  .back:hover{color:var(--burgundy-deep); border-color:var(--burgundy);}
+  .brandmark{display:flex; align-items:center; gap:10px; margin-bottom:12px;}
+  .brandmark img{flex:none; width:34px; height:34px; border-radius:7px; background:#fff; padding:4px; border:1px solid var(--line);}
+  h1{font-family:var(--heading); font-weight:600; font-style:italic; font-size:clamp(2rem,5.5vw,3rem); line-height:1.06; margin:0 0 14px; color:var(--ink); text-wrap:balance;}
+  p.dek{font-size:1.08rem; color:var(--ink-dim); max-width:60ch; margin:0;}
+
+  .awards{display:grid; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:8px; overflow:hidden; margin-top:30px;}
+  .award{background:var(--surface); padding:16px 18px;}
+  .award .v{font-family:var(--mono); font-weight:700; font-size:1.15rem; color:var(--burgundy-deep);}
+  .award .l{font-size:0.78rem; color:var(--ink-dim); margin-top:4px; line-height:1.35;}
+
+  section{margin-top:48px;}
+  h2{font-family:var(--heading); font-weight:600; font-style:italic; font-size:clamp(1.35rem,3.2vw,1.7rem); color:var(--ink); margin:0 0 6px;}
+  p.sec-note{font-size:0.88rem; color:var(--ink-dim); margin:0 0 22px; max-width:60ch;}
+  .lede{font-size:1.02rem; max-width:64ch;}
+
+  /* timeline */
+  .timeline{list-style:none; margin:0; padding:0; border-left:2px solid var(--line-strong); display:flex; flex-direction:column; gap:22px;}
+  .timeline li{padding-left:22px; position:relative;}
+  .timeline li::before{content:""; position:absolute; left:-6px; top:.4em; width:10px; height:10px; border-radius:50%; background:var(--burgundy);}
+  .timeline .when{font-family:var(--mono); font-size:0.76rem; color:var(--burgundy-deep); letter-spacing:.03em; display:block; margin-bottom:3px;}
+  .timeline p{margin:0; font-size:0.96rem;}
+
+  /* channels */
+  .channels{display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:8px;}
+  @media (max-width:640px){ .channels{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:520px){ .channels{grid-template-columns:1fr;} }
+  .channel{background:var(--surface); border:1px solid var(--line); border-radius:8px; padding:16px 18px;}
+  .channel h3{font-family:var(--heading); font-weight:600; font-size:1.02rem; margin:0 0 6px; color:var(--ink);}
+  .channel p{font-size:0.86rem; color:var(--ink-dim); margin:0;}
+
+  .pill{display:inline-block; font-family:var(--mono); font-size:0.68rem; padding:2px 9px; border-radius:20px; letter-spacing:.02em;}
+  .pill.good{background:var(--good-bg); color:var(--good);}
+  .pill.gold{background:var(--gold-bg); color:var(--gold);}
+
+  .quote{border-left:3px solid var(--burgundy); background:var(--surface-2); padding:16px 20px; margin:26px 0; max-width:62ch; font-style:italic; font-family:var(--heading); font-size:1.05rem;}
+
+  footer{margin-top:56px; padding-top:22px; border-top:1px solid var(--line); font-size:0.8rem; color:var(--ink-dim);}
+  footer p{max-width:74ch; margin:0 0 8px;}
+
+  @media (max-width:520px){ .wrap{padding-block:34px 50px;} }
+</style>
+
+<div class="wrap">
+  <a class="back" href="alvin-slate-profile.html">&larr; Alvin Slate</a>
+  <div class="brandmark">
+    <img src="connected-minds-logo.png" alt="Connected Minds logo" width="34" height="34">
+    <p class="eyebrow">Connected Minds LLC &middot; Marietta, GA &middot; Marketing engagement, Nov 2023 &ndash; Present</p>
+  </div>
+  <h1>Two years, one real address</h1>
+  <p class="dek">A mental health practice with no physical address and a website that needed rebuilding. Two years later: a real office, a top local rating two years running, and a lead form that hasn't stopped filling up.</p>
+
+  <div class="awards">
+    <div class="award"><div class="v">2025 &amp; 2026</div><div class="l">BusinessRate's Best Mental Health Clinic, Marietta, GA, two years running</div></div>
+    <div class="award"><div class="v">5.0 / 55+</div><div class="l">Average Google rating across 55+ reviews</div></div>
+    <div class="award"><div class="v">799</div><div class="l">Appointment-request submissions logged since launch, still climbing</div></div>
+  </div>
+
+  <section>
+    <h2>The arc</h2>
+    <p class="sec-note">From a virtual-only practice to a rated, reviewed, physical clinic.</p>
+    <ul class="timeline">
+      <li><span class="when">November 2023</span><p>Engagement begins. Connected Minds is virtual-only; the work starts with rebuilding and managing their website.</p></li>
+      <li><span class="when">Spring &ndash; Summer 2024</span><p>Market and competitive research for a physical location: demographics, five nearby competitors mapped, a location-selection recommendation built and delivered.</p></li>
+      <li><span class="when">August &ndash; September 2024</span><p>Marketing plan built for the new Marietta location: SEO and landing pages for TMS and Spravato, geo-targeted search, social, email, and a reputation-management program.</p></li>
+      <li><span class="when">October 7, 2024</span><p>Grand opening at 2155 Post Oak Tritt Road, Suite 300, Marietta, GA: a ribbon-cutting, a TMS demonstration, and the first physical home the practice has had.</p></li>
+      <li><span class="when">Ongoing</span><p>Search, social, video, press, out-of-home, and direct mail all run continuously. The clinic reports their website as a primary source of new business.</p></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>What's running now</h2>
+    <div class="channels">
+      <div class="channel"><h3>Search</h3><p>SEO and paid search targeted on TMS, Spravato, and general mental-health-care queries within a 10&ndash;15 mile radius of Marietta.</p></div>
+      <div class="channel"><h3>Social &amp; video</h3><p>Meta Ads across Facebook and Instagram, plus produced video content and short-form reels built around patient-education topics and clinic updates.</p></div>
+      <div class="channel"><h3>Press</h3><p>A formal press release announced the Marietta location's grand opening and expanded services, distributed alongside the launch marketing push.</p></div>
+      <div class="channel"><h3>Direct mail</h3><p>A geo-targeted postcard sequence mailed to the neighborhoods around the new location, the same area-farming approach used to build local awareness before a launch.</p></div>
+      <div class="channel"><h3>Out-of-home &amp; events</h3><p>Billboard placements and physical events, including the grand-opening ribbon-cutting and ongoing community sessions.</p></div>
+      <div class="channel"><h3>Reputation</h3><p>Active review generation and monitoring. The foundation under the 5.0 rating and the BusinessRate recognition.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>The lead signal</h2>
+    <p class="lede">The clinic's appointment-request form had logged 799 submissions as of September 2026. This isn't a launch spike that faded: the first full month ran 33 requests, and two years later the form is still running dozens of submissions a month. Medication management for an existing diagnosis has been the single most-requested service in almost every period since launch, which has held steady as the clearest signal of what the market actually wants from this clinic.</p>
+    <div class="quote">"Connected Minds was rated Best Mental Health Clinic in Marietta by BusinessRate for 2025, and again in 2026 as of this writing."</div>
+  </section>
+
+  <footer>
+    <p><span class="pill good">Sourced</span> &nbsp;The 5.0/55+ Google rating is independently checkable on Google's own listing. The BusinessRate award is as represented on the clinic's own site and staging environment for 2025 and, as of this writing, 2026, not independently confirmed with BusinessRate directly. Submission volume and service-mix figures come from the clinic's own Jotform appointment-request form, aggregated as of September 2026, with no patient-identifying detail included here. This page is unlisted and shared by direct link only.</p>
+  </footer>
+</div>
+</body></html>
