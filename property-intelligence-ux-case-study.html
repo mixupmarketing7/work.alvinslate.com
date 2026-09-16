@@ -71,37 +71,13 @@
   .princ-list b{display:block; color:var(--ink); font-weight:700; font-size:0.95rem; margin-bottom:4px;}
   .princ-list span{font-size:0.85rem; color:var(--ink-dim);}
 
-  .mock-grid{display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-top:16px;}
-  @media (max-width:760px){ .mock-grid{grid-template-columns:1fr;} }
-  .mock-frame{border:1px solid var(--line-strong); border-radius:8px; overflow:hidden; background:var(--surface); box-shadow:0 1px 3px rgba(0,0,0,.06);}
-  .mock-bar{background:var(--surface-2); padding:9px 12px; display:flex; gap:5px; align-items:center; border-bottom:1px solid var(--line);}
-  .mock-dot{width:7px; height:7px; border-radius:50%; background:var(--line-strong); flex:none;}
-  .mock-url{font-family:var(--mono); font-size:0.68rem; color:var(--ink-dim); margin-left:8px;}
-  .mock-body{padding:18px 18px 20px; font-family:var(--body);}
-  .mock-caption{font-size:0.78rem; color:var(--ink-dim); margin-top:8px;}
-  .mock-caption b{color:var(--ink-dim); font-weight:600;}
-
-  .mock-addr{font-family:var(--display); font-weight:700; font-size:1.02rem; color:var(--ink); margin-bottom:10px;}
-  .mock-chiprow{display:flex; flex-wrap:wrap; gap:6px; margin-bottom:16px;}
-  .mock-chip{display:inline-flex; align-items:center; gap:4px; font-family:var(--mono); font-size:0.65rem; padding:3px 9px; border-radius:20px; color:var(--ink-dim); border:1px solid var(--line-strong);}
-  .mock-chip.small{font-size:0.6rem; padding:2px 7px;}
-  .mock-chip.solid{background:var(--surface-2); border-color:var(--ink-dim); color:var(--ink);}
-  .mock-chip.solid2{background:var(--surface-2); border-width:2px; border-color:var(--ink); color:var(--ink);}
-  .mock-chip.dashed{border-style:dashed; border-width:2px;}
-  .mock-chip.dotted{border-style:dotted; border-width:2px;}
-
-  .mock-card{background:var(--paper); border-radius:6px; padding:14px 16px; margin-bottom:14px;}
-  .mock-card-label{font-size:0.78rem; color:var(--ink-dim); display:flex; align-items:center; gap:8px;}
-  .mock-illus{font-family:var(--mono); font-size:0.6rem; text-transform:uppercase; letter-spacing:.04em; border:1px dashed var(--line-strong); border-radius:4px; padding:1px 6px; color:var(--ink-dim);}
-  .mock-card-value{font-family:var(--mono); font-weight:700; font-size:1.3rem; color:var(--signal-deep); margin-top:4px; font-variant-numeric:tabular-nums;}
-  .mock-card-sub{font-size:0.78rem; color:var(--ink-dim); margin-top:6px; line-height:1.5;}
-  .mock-cta{font-family:var(--mono); font-size:0.78rem; color:var(--signal-deep); border:1px solid var(--line-strong); border-radius:6px; padding:9px 12px; display:inline-block;}
-
-  .mock-table{width:100%; border-collapse:collapse; font-size:0.85rem;}
-  .mock-table td{padding:9px 4px; border-bottom:1px solid var(--line); vertical-align:middle;}
-  .mock-table td:first-child{color:var(--ink-dim);}
-  .mock-table td:nth-child(2){font-weight:600; color:var(--ink); text-align:right; padding-right:12px; white-space:nowrap;}
-  .mock-table tr:last-child td{border-bottom:none;}
+  .shot-stack{display:flex; flex-direction:column; gap:28px; margin-top:16px; align-items:flex-start;}
+  .shot-frame{margin:0; max-width:100%;}
+  .shot-frame img{display:block; max-width:100%; width:auto; border:1px solid var(--line-strong); border-radius:10px; background:#fff; box-shadow:0 2px 10px rgba(0,0,0,.10);}
+  .shot-frame--phone img{max-width:340px;}
+  .shot-frame:not(.shot-frame--phone) img{max-width:720px;}
+  .shot-frame figcaption{font-size:0.82rem; color:var(--ink-dim); margin-top:10px; max-width:62ch;}
+  .shot-frame figcaption b{color:var(--ink); font-weight:600;}
 
   footer{margin-top:56px; padding-top:22px; border-top:1px solid var(--line); font-size:0.8rem; color:var(--ink-dim);}
   footer p{max-width:74ch; margin:0 0 8px;}
@@ -148,43 +124,16 @@
 
   <section>
     <h2>What it looks like</h2>
-    <p class="lede" style="margin-bottom:0;">Illustrative recreations of two screens, rebuilt here with fictional data &mdash; not screenshots of the real pack, which carries actual county and case detail this page withholds by design.</p>
-    <div class="mock-grid">
-      <div>
-        <div class="mock-frame">
-          <div class="mock-bar"><span class="mock-dot"></span><span class="mock-dot"></span><span class="mock-dot"></span><span class="mock-url">Homeowner result</span></div>
-          <div class="mock-body">
-            <div class="mock-addr">142 Example Ln &middot; Tax district 04</div>
-            <div class="mock-chiprow">
-              <span class="mock-chip solid">&#9679; County record</span>
-              <span class="mock-chip solid2">&#10003; Verified by staff</span>
-              <span class="mock-chip dashed">&#8776; Estimated</span>
-              <span class="mock-chip dotted">? Unknown</span>
-            </div>
-            <div class="mock-card">
-              <div class="mock-card-label">Estimated savings if you appeal <span class="mock-illus">Illustrative</span></div>
-              <div class="mock-card-value">$160&ndash;$240 / yr</div>
-              <div class="mock-card-sub">Range depends on homestead status, which this record doesn't confirm &mdash; not homesteaded: about $240/yr, homesteaded: about $160/yr.</div>
-            </div>
-            <div class="mock-cta">Confirm homestead status &rarr;</div>
-          </div>
-        </div>
-        <p class="mock-caption"><b>Homeowner result.</b> The range itself is the honesty &mdash; a single number would claim certainty the data doesn't have.</p>
-      </div>
-      <div>
-        <div class="mock-frame">
-          <div class="mock-bar"><span class="mock-dot"></span><span class="mock-dot"></span><span class="mock-dot"></span><span class="mock-url">Parcel evidence</span></div>
-          <div class="mock-body">
-            <table class="mock-table">
-              <tr><td>Assessed value</td><td>$84,000</td><td><span class="mock-chip solid small">&#9679; County</span></td></tr>
-              <tr><td>Homestead exemption</td><td>Confirmed</td><td><span class="mock-chip solid2 small">&#10003; Staff</span></td></tr>
-              <tr><td>Owner-occupied</td><td>Likely</td><td><span class="mock-chip dashed small">&#8776; Est.</span></td></tr>
-              <tr><td>Last renovation permit</td><td>&mdash;</td><td><span class="mock-chip dotted small">? Unk.</span></td></tr>
-            </table>
-          </div>
-        </div>
-        <p class="mock-caption"><b>Parcel evidence.</b> Every field carries its own certainty tag &mdash; a record isn't one fact, it's several, each with a different confidence.</p>
-      </div>
+    <p class="lede">Real screens from the design pack, at full detail &mdash; every parcel, address and dollar figure is sample data on a fictional property to start with, and the county name is additionally redacted here to match this page's policy on client-identifying detail.</p>
+    <div class="shot-stack">
+      <figure class="shot-frame shot-frame--phone">
+        <img src="piux-homeowner-result.png" alt="Homeowner result screen: a savings range with certainty labels, a homestead question, and a comparable-homes ranking, county name redacted" loading="lazy">
+        <figcaption><b>Homeowner result.</b> The range itself is the honesty &mdash; a single number would claim certainty the data doesn't have.</figcaption>
+      </figure>
+      <figure class="shot-frame">
+        <img src="piux-parcel-evidence.png" alt="Parcel evidence drawer: county record, sales history, tax scenarios and comparable sales, each fact tagged with its certainty state, county name redacted" loading="lazy">
+        <figcaption><b>Parcel evidence.</b> Every fact carries its own certainty tag and source &mdash; a record isn't one number, it's dozens, each with a different confidence.</figcaption>
+      </figure>
     </div>
   </section>
 
