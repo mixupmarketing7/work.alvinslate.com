@@ -1,0 +1,144 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>One Price, Checked Twice</title></head><body>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+  :root{
+    --charcoal:#1F2933; --brick:#A34532; --sand:#E6D6C2; --cream:#F5F2EC; --teal:#1F7A6B; --gray:#6B7280;
+    --paper:var(--cream); --surface:#FFFFFF; --ink:var(--charcoal); --ink-dim:var(--gray);
+    --line:#E1D6C8; --bad:#A34532; --bad-bg:#F7E9E3; --good:#1F7A6B; --good-bg:#E3F0EC;
+    --heading:"Poppins","Montserrat",sans-serif; --body:"Inter","Source Sans Pro",sans-serif; --mono:"IBM Plex Mono",ui-monospace,monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#15191E; --surface:#1E242B; --ink:#E9E5DD; --ink-dim:#A5ADB8;
+      --line:#333B44; --bad:#D9705B; --bad-bg:#3E241C; --good:#4FBFA9; --good-bg:#173A34;
+      --sand:#2A241C; --teal:#4FBFA9; --brick:#D9705B;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#15191E; --surface:#1E242B; --ink:#E9E5DD; --ink-dim:#A5ADB8;
+    --line:#333B44; --bad:#D9705B; --bad-bg:#3E241C; --good:#4FBFA9; --good-bg:#173A34;
+    --sand:#2A241C; --teal:#4FBFA9; --brick:#D9705B;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0; background-color:var(--paper); color:var(--ink); font-family:var(--body); line-height:1.6; padding:0 20px;
+    background-image:
+      repeating-linear-gradient(0deg, color-mix(in srgb, var(--line) 55%, transparent) 0, color-mix(in srgb, var(--line) 55%, transparent) 1px, transparent 1px, transparent 40px),
+      repeating-linear-gradient(90deg, color-mix(in srgb, var(--line) 55%, transparent) 0, color-mix(in srgb, var(--line) 55%, transparent) 1px, transparent 1px, transparent 40px);
+  }
+  .wrap{max-width:820px; margin:0 auto; padding-block:46px 70px;}
+  a{color:var(--brick);}
+
+  .eyebrow{font-family:var(--mono); font-size:0.72rem; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-dim); margin:0;}
+  .back{font-family:var(--mono); font-size:0.78rem; text-decoration:none; color:var(--ink-dim); border-bottom:1px solid var(--line); display:inline-block; margin-bottom:22px;}
+  .back:hover{color:var(--brick); border-color:var(--brick);}
+  .brandmark{display:flex; align-items:center; gap:9px; margin-bottom:12px;}
+  .brandmark svg{flex:none; color:var(--brick);}
+  .brandmark svg polygon{fill:currentColor;}
+  h1{font-family:var(--heading); font-weight:800; font-size:clamp(1.9rem,5vw,2.7rem); line-height:1.08; margin:0 0 14px; color:var(--ink); text-wrap:balance;}
+  p.dek{font-size:1.08rem; color:var(--ink-dim); max-width:60ch; margin:0;}
+
+  section{margin-top:48px;}
+  h2{font-family:var(--heading); font-weight:700; font-size:clamp(1.3rem,3vw,1.6rem); color:var(--ink); margin:0 0 18px;}
+  .lede{font-size:1.02rem; max-width:65ch;}
+  .lede + .lede{margin-top:12px;}
+
+  /* incident cards */
+  .incidents{display:flex; flex-direction:column; gap:14px; margin-top:20px;}
+  .incident{background:var(--surface); border:1px solid var(--line); border-left:4px solid var(--bad); border-radius:8px; padding:16px 20px;}
+  .incident .tag{display:inline-block; font-family:var(--mono); font-size:0.68rem; letter-spacing:.06em; text-transform:uppercase; color:var(--bad); background:var(--bad-bg); padding:2px 9px; border-radius:20px; margin-bottom:8px;}
+  .incident p{margin:0; font-size:0.95rem;}
+
+  /* pipeline */
+  .pipeline{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:8px; overflow:hidden; margin:22px 0;}
+  .stage{background:var(--surface); padding:16px 16px 14px;}
+  .stage .n{font-family:var(--mono); font-size:0.68rem; color:var(--teal); letter-spacing:.08em;}
+  .stage h3{font-family:var(--heading); font-weight:700; font-size:0.98rem; margin:6px 0 6px; color:var(--ink);}
+  .stage p{font-size:0.82rem; color:var(--ink-dim); margin:0;}
+
+  .guard-list{margin:0; padding-left:1.15rem; display:flex; flex-direction:column; gap:10px; max-width:66ch;}
+  .guard-list li{font-size:0.97rem;}
+  .guard-list b{color:var(--ink); font-weight:600;}
+
+  .impact-band{display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:8px; overflow:hidden; margin-top:22px;}
+  .impact-tile{background:var(--surface); padding:16px 18px;}
+  .impact-tile .v{font-family:var(--mono); font-weight:700; font-size:1.15rem; color:var(--good);}
+  .impact-tile .l{font-size:0.78rem; color:var(--ink-dim); margin-top:4px;}
+
+  footer{margin-top:56px; padding-top:22px; border-top:1px solid var(--line); font-size:0.8rem; color:var(--ink-dim);}
+  footer p{max-width:74ch; margin:0 0 8px;}
+
+  @media (max-width:640px){ .pipeline{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:520px){ .wrap{padding-block:34px 50px;} .pipeline{grid-template-columns:1fr;} }
+</style>
+
+<div class="wrap">
+  <a class="back" href="alvin-slate-profile.html">&larr; Alvin Slate</a>
+  <div class="brandmark">
+    <svg viewBox="0 0 116 116" width="22" height="22" aria-hidden="true"><g><polygon points="40.85,24.76 73.36,6 69.57,23.82 37.07,42.59"/><polygon points="79.05,24.61 30.29,52.75 30.29,68.33 81.76,110 85.71,91.42 49.99,62.49 79.05,45.72"/><polygon points="54.76,62.87 79.05,48.84 79.05,82.54"/></g></svg>
+    <p class="eyebrow">EmpowerBuild &middot; Fractional COO case study</p>
+  </div>
+  <h1>One price, checked twice</h1>
+  <p class="dek">Every estimate this company sends now traces back to one verified number, and gets checked at least twice before a client sees it. That discipline is what caught two pricing errors and closed a signature near-miss before any of them reached a client.</p>
+
+  <section>
+    <h2>The result</h2>
+    <div class="impact-band">
+      <div class="impact-tile"><div class="v">2</div><div class="l">Silent pricing errors caught and fixed before a client ever saw them</div></div>
+      <div class="impact-tile"><div class="v">1</div><div class="l">Document-control near-miss closed with a standing sign-off rule</div></div>
+      <div class="impact-tile"><div class="v">300&ndash;400KB</div><div class="l">Healthy PDF range the QC gate checks against, every render</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>How it works</h2>
+    <p class="lede">A price only has to be right in exactly one place, and every step that could silently fail gets checked instead of assumed.</p>
+    <div class="pipeline">
+      <div class="stage"><div class="n">01</div><h3>One underwrite per job</h3><p>A single verified file drives every line. The client-facing rate is primary; internal cost derives from it, not the other way around.</p></div>
+      <div class="stage"><div class="n">02</div><h3>Read the sketch, not just the scope</h3><p>Hand-marked dimensions on a client's design sketch get read directly off the page, then cross-checked against what's actually verified versus approximate before any of it prices into an estimate.</p></div>
+      <div class="stage"><div class="n">03</div><h3>Assessor-card takeoffs</h3><p>For Indianapolis jobs without a usable sketch, wall heights and perimeters come off the county assessor's own property record card instead of a guess from a photo.</p></div>
+      <div class="stage"><div class="n">04</div><h3>Byte-size QC gate</h3><p>Every rendered estimate gets checked before delivery. A healthy PDF runs 300&ndash;400KB; a silently-overwritten one lands near 46KB, and now that's caught automatically.</p></div>
+      <div class="stage"><div class="n">05</div><h3>EST &rarr; CA &rarr; CO</h3><p>Estimate, contract, and change order each get their own numbering track. A revision is always a new file, never an overwrite of the last one.</p></div>
+      <div class="stage"><div class="n">06</div><h3>Stage before signature</h3><p>Nothing goes out for e-signature until it's staged and reviewed first, closing the exact gap that caused the double-send below.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Standing rules</h2>
+    <ul class="guard-list">
+      <li><b>Scope changes get a change order, not a renegotiation.</b> Cost and schedule impact are recorded and approved by both the customer and ownership before unfunded work starts. No verbal approval or silence counts as authorization.</li>
+      <li><b>20% markup, every estimate.</b> Set once, applied consistently, instead of negotiated case by case.</li>
+      <li><b>Geocode before you price.</b> A bad address has broken two jobs already; now it's checked first, every time.</li>
+      <li><b>Never invent a unit cost.</b> If a number isn't sourced, it's marked an allowance, not presented as a firm price.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>What it replaced</h2>
+    <p class="lede">Every estimate used to start from a blank copy of the same template, priced by hand, with no single place a number had to be right. That looked fine until it didn't:</p>
+    <div class="incidents">
+      <div class="incident">
+        <span class="tag">Now caught by the underwrite file</span>
+        <p>One job's per-trade subtotals were silently wrong through two full revisions before anyone noticed. The grand total happened to be right, so nothing looked broken until someone added the trade lines by hand.</p>
+      </div>
+      <div class="incident">
+        <span class="tag">Now caught by the QC gate</span>
+        <p>A render silently overwrote a good, client-ready estimate PDF with a corrupted error page. Nothing in the workflow would have caught it without deliberately checking file size on every render.</p>
+      </div>
+      <div class="incident">
+        <span class="tag">Now caught by the change-order gate</span>
+        <p>A signed contract sat roughly $6,450 under its likely cost because scope changed after pricing and nobody re-priced it. The gap was found on review, not by the client.</p>
+      </div>
+      <div class="incident">
+        <span class="tag">Now caught by the sign-off rule</span>
+        <p>A revised contract went out for e-signature twice within the same hour. The e-signature platform has no cancel/void tool, so a premature send has to be killed by hand.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>Figures and incidents above are drawn from real estimate and contract records; client names and full addresses are withheld here by design. This page is unlisted and shared by direct link only.</p>
+  </footer>
+</div>
+</body></html>
