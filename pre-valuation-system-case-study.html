@@ -1,4 +1,4 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="robots" content="noindex,nofollow,noarchive,nosnippet"><meta name="viewport" content="width=device-width, initial-scale=1"><title>20.59 to 28.58</title></head><body>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="robots" content="noindex,nofollow,noarchive,nosnippet"><meta name="viewport" content="width=device-width, initial-scale=1"><title>What the Deed Actually Said</title></head><body>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Source+Sans+3:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
@@ -13,12 +13,12 @@
   @media (prefers-color-scheme: dark){
     :root:not([data-theme="light"]){
       --paper:#12151B; --surface:#1B1F27; --ink:#E7E9EC; --ink-dim:#9AA3AE;
-      --line:#2C323C; --good:#4FBFA9; --good-bg:#153531; --navy:#7FA6E0; --navy-deep:#A9C4EE; --orange:#F5B54D; --teal:#4FD1D6;
+      --line:#2C323C; --good:#4FBFA9; --good-bg:#153531; --navy:#7FA6E0; --navy-deep:#A9C4EE; --orange:#F5B54D; --gold:#E0A73D; --teal:#4FD1D6;
     }
   }
   :root[data-theme="dark"]{
     --paper:#12151B; --surface:#1B1F27; --ink:#E7E9EC; --ink-dim:#9AA3AE;
-    --line:#2C323C; --good:#4FBFA9; --good-bg:#153531; --navy:#7FA6E0; --navy-deep:#A9C4EE; --orange:#F5B54D; --teal:#4FD1D6;
+    --line:#2C323C; --good:#4FBFA9; --good-bg:#153531; --navy:#7FA6E0; --navy-deep:#A9C4EE; --orange:#F5B54D; --gold:#E0A73D; --teal:#4FD1D6;
   }
   *{box-sizing:border-box;}
   body{
@@ -34,7 +34,7 @@
   .back{font-family:var(--mono); font-size:0.78rem; text-decoration:none; color:var(--ink-dim); border-bottom:1px solid var(--line); display:inline-block; margin-bottom:22px;}
   .back:hover{color:var(--navy); border-color:var(--navy);}
   .brandmark{display:flex; align-items:center; gap:10px; margin-bottom:12px;}
-  .brandmark img{width:26px; height:26px; border-radius:6px;}
+  .brandmark img{width:38px; height:38px;}
   h1{font-family:var(--heading); font-weight:800; font-size:clamp(1.9rem,5vw,2.7rem); line-height:1.08; margin:0 0 14px; color:var(--navy-deep); text-wrap:balance;}
   p.dek{font-size:1.08rem; color:var(--ink-dim); max-width:62ch; margin:0;}
 
@@ -46,7 +46,8 @@
   .impact-band{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:8px; overflow:hidden; margin-top:22px;}
   @media (max-width:640px){ .impact-band{grid-template-columns:1fr;} }
   .impact-tile{background:var(--surface); padding:16px 18px;}
-  .impact-tile .v{font-family:var(--mono); font-weight:700; font-size:1.15rem; color:var(--good); font-variant-numeric:tabular-nums;}
+  .impact-tile .v{font-family:var(--mono); font-weight:700; font-size:1.15rem; color:var(--gold); font-variant-numeric:tabular-nums;}
+  .impact-tile{border-top:3px solid var(--orange);}
   .impact-tile .l{font-size:0.78rem; color:var(--ink-dim); margin-top:4px;}
 
   .pipeline{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:8px; overflow:hidden; margin:22px 0;}
@@ -72,21 +73,21 @@
     <img src="pre-mark.png" alt="Property Revaluation Experts mark">
     <p class="eyebrow">Property Revaluation Experts &middot; Co-Founder &amp; COO case study</p>
   </div>
-  <h1>20.59 to 28.58</h1>
-  <p class="dek">Georgia law lays out a specific, statutory sequence a county has to follow to recalibrate its property values. I built the system that runs that sequence &mdash; and for one county whose sales ratio sat well under the legal floor, it moved the certified digest from $621.0M to $760.6M and the equalized ratio from 20.59 to 28.58.</p>
+  <h1>What the deed actually said</h1>
+  <p class="dek">I built two systems for one county: a recalibration pipeline that runs Georgia's statutory sequence for correcting property values, and a separate reconciliation workflow that checks the sales data behind a ratio study against the actual recorded deed. The pipeline moved the numbers. The reconciliation workflow is what held up when the resulting study got challenged.</p>
 
   <section>
     <h2>The result</h2>
-    <div class="impact-band">
+    <div class="impact-band" style="grid-template-columns:repeat(2,1fr);">
       <div class="impact-tile"><div class="v">20.59 &rarr; 28.58</div><div class="l">Equalized sales ratio, before and after recalibration</div></div>
       <div class="impact-tile"><div class="v">$621.0M &rarr; $760.6M</div><div class="l">Certified digest value, same cycle</div></div>
-      <div class="impact-tile"><div class="v">~1.4%</div><div class="l">Median ratio's remaining distance from parity after calibration, versus real sales data</div></div>
     </div>
+    <p class="lede" style="margin-top:18px;">The same digest correction also reduced what the county owes annually toward its state school-funding formula obligation, since that calculation runs off the same digest and timber figures. That relief is real but genuinely hard to isolate to a clean dollar figure &mdash; it spans two different study years and is gross of a statewide cap that isn't independently confirmed &mdash; so it's described here rather than quoted as a number.</p>
   </section>
 
   <section>
-    <h2>How it works</h2>
-    <p class="lede">O.C.G.A. &sect; 48-5-343 doesn't leave the sequence up to interpretation. Every scenario the system produces has to clear it in order, and every one gets validated against Georgia statute and IAAO dispersion standards before it's even eligible for delivery &mdash; not reviewed after the fact, gated before.</p>
+    <h2>The recalibration pipeline</h2>
+    <p class="lede">O.C.G.A. &sect; 48-5-343 doesn't leave the sequence up to interpretation. Every scenario this pipeline produces has to clear it in order, and every one gets validated against Georgia statute and IAAO dispersion standards before it's even eligible for delivery &mdash; not reviewed after the fact, gated before.</p>
     <div class="pipeline">
       <div class="stage"><div class="n">01</div><h3>Verify the input data</h3><p>Parcel and sales records get rebuilt and reconciled before anything downstream trusts them.</p></div>
       <div class="stage"><div class="n">02</div><h3>Diagnose the ratio</h3><p>Every sale is stratified by property class and neighborhood; the study runs at the stratum level, not one countywide average.</p></div>
@@ -95,6 +96,12 @@
       <div class="stage"><div class="n">05</div><h3>Validate for compliance</h3><p>Coefficient of dispersion, price-related differential, and assessment-ratio band all have to clear Georgia's own thresholds, and the same check runs no matter which model produced the scenario.</p></div>
       <div class="stage"><div class="n">06</div><h3>Deliver board-ready</h3><p>A partial-data result gets flagged as a pilot or blocked outright &mdash; never delivered quietly as final.</p></div>
     </div>
+  </section>
+
+  <section>
+    <h2>The reconciliation workflow</h2>
+    <p class="lede">When a county's sales-ratio study gets challenged, the state doesn't take a correction on faith &mdash; it wants the evidence behind every disputed sale. I built a separate Claude-driven workflow for exactly that: pull the disputed sample set, check each one against the actual recorded deed instead of the field note that first went into the file, and document what the record actually supports before anything gets resubmitted.</p>
+    <p class="lede">Run against this county's study, it found three samples resting on assumptions the deed didn't support: one sale logged as spanning two counties based on the buyer's mailing address, when the deed showed the whole transaction sat in one; what looked like three separate sales in one file, which turned out to be a single conveyance and an unrelated release, misfiled together; a sale checked as one parcel when the deed actually conveyed three lots priced as one. Reconciling those, along with eight other disputed samples, moved the study's ratio to 28.58. The state auditor's office reviewed the correction and put its own position in writing: the study, as revised, is now correct.</p>
   </section>
 
   <section>
