@@ -124,4 +124,42 @@
     <p>Attendance and engagement figures above are drawn from the club's own session tracker and community-post exports; individual hosts, guests, and club staff are not named here by design. This page is unlisted and shared by direct link only.</p>
   </footer>
 </div>
+<script>
+(function(){
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var nums = document.querySelectorAll('.impact-tile .v');
+  function animate(el){
+    var original = el.textContent;
+    var matches = [];
+    var re = /\d+(\.\d+)?/g, m;
+    while ((m = re.exec(original))) matches.push(m);
+    if (!matches.length) return;
+    var duration = 1900, start = null;
+    function frame(ts){
+      if (start === null) start = ts;
+      var t = Math.min(1, (ts - start) / duration);
+      var eased = 1 - Math.pow(1 - t, 3);
+      var out = '', last = 0;
+      matches.forEach(function(mm){
+        var target = parseFloat(mm[0]);
+        var decimals = mm[0].indexOf('.') > -1 ? mm[0].split('.')[1].length : 0;
+        out += original.slice(last, mm.index) + (target * eased).toFixed(decimals);
+        last = mm.index + mm[0].length;
+      });
+      out += original.slice(last);
+      el.textContent = out;
+      if (t < 1) requestAnimationFrame(frame); else el.textContent = original;
+    }
+    requestAnimationFrame(frame);
+  }
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting) { animate(entry.target); io.unobserve(entry.target); }
+      });
+    }, {threshold:0.4});
+    nums.forEach(function(el){ io.observe(el); });
+  }
+})();
+</script>
 </body></html>
